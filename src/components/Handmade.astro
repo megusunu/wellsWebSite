@@ -1,22 +1,43 @@
 ---
+import ImageSlideshow from './ImageSlideshow.astro';
+
 const products = [
   {
     name: 'ペット用ニットウェア',
-    description: '愛犬・愛猫のためのあたたかいニットウェア。サイズオーダー可能です',
-    features: ['かぎ針編み', '棒針編み', 'オーダーメイド'],
-    image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=300&fit=crop&crop=center'
+    description: 'バンダナ、ケープ、マフラーなど愛犬・愛猫のためのあたたかいニット製品',
+    features: ['クリスマス限定', 'うさ耳フード付き', '北欧柄'],
+    price: '1,200円〜13,000円',
+    images: [
+      '/images/products/pet-wear/155704fe7e4c90313e05ea1fac58425ac1f42503.jpeg',
+      '/images/products/pet-wear/23f54aa2a25f72f4c00adec41af51af7e4cb8399.jpeg',
+      '/images/products/pet-wear/4d78b2872834f09ff435d4fa46aecbd7205ba243.jpeg',
+      '/images/products/pet-wear/55870ecd9589b5069b2ef0d1b4e8bbcabbb7b99c.jpeg',
+      '/images/products/pet-wear/5ea166172971ee8c6b1f84893c939045279b42f6.jpeg'
+    ]
   },
   {
-    name: '編みぐるみ',
-    description: 'かわいい動物や季節のモチーフを編みぐるみに。贈り物にも最適です',
-    features: ['オリジナルデザイン', 'ギフト対応', '名入れ可能'],
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop&crop=center'
+    name: 'リストウォーマー',
+    description: 'リーフ柄、コスモス、螺旋編みなど様々なデザインの手首を温める小物',
+    features: ['ウール・コットン素材', 'エメラルドグリーン', 'ターコイズ'],
+    price: '2,500円〜4,000円',
+    images: [
+      '/images/products/wrist-warmers/05c1ebd24ad37d3387394f3906e0a8c9ddb8e7d7.jpeg',
+      '/images/products/wrist-warmers/3922ecae1386284ad174d4bd2992fdf6b9a44330.jpeg',
+      '/images/products/wrist-warmers/41443df462d970c95fb36456ec29a56dc421e78a.jpeg',
+      '/images/products/wrist-warmers/52c33f55d621e68606051098cabc08f79aeeedb9.jpeg'
+    ]
   },
   {
-    name: '毛糸小物',
-    description: 'ポーチ、コースター、アクセサリーなど日常使いの小物たち',
-    features: ['実用的', 'カラフル', 'ナチュラル素材'],
-    image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=300&fit=crop&crop=center'
+    name: '編みぐるみ・季節小物',
+    description: 'チューリップ、カーネーション、かぼちゃのおもちゃ、クリスマス靴下など',
+    features: ['季節限定', 'インテリア', 'ペット用おもちゃ'],
+    price: '1,000円〜',
+    images: [
+      '/images/products/tulips/6576044701e8389906928293d85b22e7cad71b71.jpeg',
+      '/images/products/tulips/77552593e30842b9023daa514c9697c7a720c002.jpeg',
+      '/images/products/tulips/8449fcdd85c3662ad8e1d93f894681d5f15194d9.jpeg',
+      '/images/products/tulips/4a2039495e08da451d3b455e729cbcd93dd70aab.jpeg'
+    ]
   }
 ];
 
@@ -48,11 +69,15 @@ const shopLinks = [
     <div class="grid md:grid-cols-3 gap-8 mb-16">
       {products.map((product) => (
         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
-          <div class="h-48 bg-natural-beige/50 overflow-hidden">
-            <img src={product.image} alt={product.name} class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-          </div>
+          <ImageSlideshow 
+            images={product.images} 
+            alt={product.name}
+            autoPlay={true}
+            interval={4000}
+          />
           <div class="p-6">
-            <h3 class="text-xl font-bold text-natural-brown mb-3">{product.name}</h3>
+            <h3 class="text-xl font-bold text-natural-brown mb-2">{product.name}</h3>
+            <p class="text-vibrant-orange font-semibold mb-3">{product.price}</p>
             <p class="text-gray-600 mb-4">{product.description}</p>
             <div class="flex flex-wrap gap-2">
               {product.features.map((feature) => (
@@ -74,7 +99,7 @@ const shopLinks = [
              class="block bg-natural-beige/30 rounded-xl p-6 hover:bg-natural-beige/50 transition-colors">
             <h4 class="font-bold text-natural-green mb-2">{shop.name}</h4>
             <p class="text-gray-600 text-sm">{shop.description}</p>
-            <span class="inline-block mt-2 text-natural-green">
+            <span class="inline-block mt-2 text-vibrant-orange hover:text-light-orange transition-colors">
               ショップを見る →
             </span>
           </a>

@@ -9,6 +9,8 @@ export default {
         'natural-beige': '#F5E6D3',
         'natural-brown': '#8D6E63',
         'warm-yellow': '#FFD54F',
+        'vibrant-orange': '#FF7043',
+        'light-orange': '#FFAB91',
       },
       fontFamily: {
         'sans': ['Noto Sans JP', 'sans-serif'],

@@ -1,0 +1,156 @@
+---
+export interface Props {
+  images: string[];
+  alt: string;
+  autoPlay?: boolean;
+  interval?: number;
+}
+
+const { images, alt, autoPlay = true, interval = 3000 } = Astro.props;
+const slideshowId = `slideshow-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="relative w-full h-48 overflow-hidden rounded-lg bg-natural-beige/50 group">
+  <div 
+    id={slideshowId} 
+    class="flex transition-transform duration-500 ease-in-out h-full"
+    style={`width: ${images.length * 100}%;`}
+  >
+    {images.map((image, index) => (
+      <div class="h-full flex-shrink-0" style={`width: ${100 / images.length}%;`}>
+        <img 
+          src={image} 
+          alt={`${alt} ${index + 1}`}
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation arrows -->
+  <button 
+    type="button"
+    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-natural-brown rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg"
+    onclick={`previousSlide('${slideshowId}')`}
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+  <button 
+    type="button"
+    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-natural-brown rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg"
+    onclick={`nextSlide('${slideshowId}')`}
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Dots indicator -->
+  <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+    {images.map((_, index) => (
+      <button
+        type="button"
+        class={`w-2 h-2 rounded-full transition-colors duration-200 ${index === 0 ? 'bg-vibrant-orange' : 'bg-white/60 hover:bg-white/80'}`}
+        onclick={`goToSlide('${slideshowId}', ${index})`}
+        data-slide-index={index}
+      ></button>
+    ))}
+  </div>
+</div>
+
+<script define:vars={{ slideshowId, autoPlay, interval, imagesLength: images.length }}>
+  // Create a unique namespace for each slideshow instance
+  if (!window.slideshows) {
+    window.slideshows = {};
+  }
+
+  window.slideshows[slideshowId] = {
+    currentSlide: 0,
+    autoPlayTimer: null,
+    imagesLength: imagesLength,
+    autoPlay: autoPlay,
+    interval: interval
+  };
+
+  function updateSlidePosition(id) {
+    const slideshow = document.getElementById(id);
+    const container = slideshow?.parentElement;
+    const dots = container?.querySelectorAll('[data-slide-index]');
+    const currentSlide = window.slideshows[id].currentSlide;
+    const totalImages = window.slideshows[id].imagesLength;
+    
+    if (slideshow) {
+      const movePercentage = (currentSlide * 100) / totalImages;
+      slideshow.style.transform = `translateX(-${movePercentage}%)`;
+    }
+    
+    // Update dots
+    if (dots) {
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('bg-vibrant-orange');
+          dot.classList.remove('bg-white/60');
+        } else {
+          dot.classList.remove('bg-vibrant-orange');
+          dot.classList.add('bg-white/60');
+        }
+      });
+    }
+  }
+
+  window.nextSlide = function(id) {
+    const slideshow = window.slideshows[id];
+    if (slideshow) {
+      slideshow.currentSlide = (slideshow.currentSlide + 1) % slideshow.imagesLength;
+      updateSlidePosition(id);
+    }
+  };
+
+  window.previousSlide = function(id) {
+    const slideshow = window.slideshows[id];
+    if (slideshow) {
+      slideshow.currentSlide = (slideshow.currentSlide - 1 + slideshow.imagesLength) % slideshow.imagesLength;
+      updateSlidePosition(id);
+    }
+  };
+
+  window.goToSlide = function(id, index) {
+    const slideshow = window.slideshows[id];
+    if (slideshow) {
+      slideshow.currentSlide = index;
+      updateSlidePosition(id);
+    }
+  };
+
+  function startAutoPlay(id) {
+    const slideshow = window.slideshows[id];
+    if (slideshow && slideshow.autoPlay && slideshow.imagesLength > 1) {
+      slideshow.autoPlayTimer = setInterval(() => {
+        window.nextSlide(id);
+      }, slideshow.interval);
+    }
+  }
+
+  function stopAutoPlay(id) {
+    const slideshow = window.slideshows[id];
+    if (slideshow && slideshow.autoPlayTimer) {
+      clearInterval(slideshow.autoPlayTimer);
+      slideshow.autoPlayTimer = null;
+    }
+  }
+
+  // Initialize this specific slideshow
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById(slideshowId)?.parentElement;
+    if (container) {
+      startAutoPlay(slideshowId);
+      
+      container.addEventListener('mouseenter', () => stopAutoPlay(slideshowId));
+      container.addEventListener('mouseleave', () => startAutoPlay(slideshowId));
+    }
+  });
+</script>

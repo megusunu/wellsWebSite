@@ -10,7 +10,7 @@ const navItems = [
 <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
   <nav class="section-padding py-4">
     <div class="flex justify-between items-center">
-      <a href="/" class="text-2xl font-serif font-bold text-natural-green hover:text-natural-light-green transition-colors">
+      <a href="/" class="text-2xl font-serif font-bold text-natural-green hover:text-vibrant-orange transition-colors">
         Wells
       </a>
       
@@ -23,7 +23,7 @@ const navItems = [
       <ul class="hidden md:flex space-x-8">
         {navItems.map((item) => (
           <li>
-            <a href={item.href} class="text-gray-700 hover:text-natural-green transition-colors font-medium">
+            <a href={item.href} class="text-gray-700 hover:text-vibrant-orange transition-colors font-medium">
               {item.label}
             </a>
           </li>
@@ -34,7 +34,7 @@ const navItems = [
     <ul id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
       {navItems.map((item) => (
         <li>
-          <a href={item.href} class="block py-2 text-gray-700 hover:text-natural-green transition-colors font-medium">
+          <a href={item.href} class="block py-2 text-gray-700 hover:text-vibrant-orange transition-colors font-medium">
             {item.label}
           </a>
         </li>
