@@ -30,17 +30,21 @@ import Footer from '../components/Footer.astro';
             <!-- Profile Image Placeholder -->
             <div class="fade-in">
               <div class="bg-gradient-to-br from-natural-light-green/20 to-warm-yellow/20 rounded-2xl p-8 text-center">
-                <div class="w-48 h-48 mx-auto bg-natural-green/10 rounded-full flex items-center justify-center mb-6">
-                  <span class="text-6xl">👩‍💻</span>
+                <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-natural-green/20">
+                  <img 
+                    src="/images/profile.jpg" 
+                    alt="草間恵のプロフィール写真" 
+                    class="w-full h-full object-cover"
+                  />
                 </div>
                 <h2 class="text-2xl font-sans font-bold text-natural-brown mb-2">草間 恵</h2>
                 <p class="text-natural-green font-medium mb-4">Wells合同会社 代表社員</p>
                 <div class="space-y-2 text-sm text-gray-600">
                   <p>物理学科出身のシステムエンジニア</p>
-                  <p>システム開発歴17年</p>
-                  <p>オフショア開発技術リーダー</p>
-                  <p>証券系・地図系アプリ開発実績</p>
-                  <p>技術とハンドメイドの二刀流</p>
+                  <p>システム開発経験豊富</p>
+                  <p>モバイルアプリ開発経験</p>
+                  <p>モバイルアプリ・地図系アプリ開発実績</p>
+                  <p>技術とハンドメイドの両立</p>
                 </div>
               </div>
             </div>
@@ -50,12 +54,12 @@ import Footer from '../components/Footer.astro';
               <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-vibrant-orange">
                 <h3 class="font-sans font-bold text-natural-brown mb-3 flex items-center">
                   <span class="text-vibrant-orange mr-2">🎯</span>
-                  起業のきっかけ
+                  起業の想い
                 </h3>
                 <p class="text-gray-700 leading-relaxed">
-                  本業のシステムエンジニアを続ける中で「フリーランスにならないの？」と言われることが増えてきました。
-                  思いついたことをやってみたい！という想いと、社会人生活のセーフティーネットを保ちながら、
-                  ハンドメイドという趣味+αの活動をバランスよく続けたくて起業を決意しました。
+                  システムエンジニアとしての経験を積み重ねる中で、技術と手仕事の両方で人々の課題を解決したいという想いが強くなりました。
+                  「新しい技術への挑戦」と「人生のセーフティネットとしての安定基盤」、そして「手仕事で伝える温かさ」。
+                  これらすべてを組み合わせた形で、身近なところから価値を提供したいと考え、会社設立を決意しました。
                 </p>
               </div>
 
@@ -74,12 +78,12 @@ import Footer from '../components/Footer.astro';
               <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-warm-yellow">
                 <h3 class="font-sans font-bold text-natural-brown mb-3 flex items-center">
                   <span class="text-warm-yellow mr-2">⚡</span>
-                  技術への想い
+                  技術と手仕事の共通点
                 </h3>
                 <p class="text-gray-700 leading-relaxed">
-                  「新しい技術を積極的に利用するプロジェクトに携わりたい」
-                  「目先がどんどん変わるプロジェクトであれば、積極的に楽しく携われる」
-                  変化を楽しみ、学び続けることが私の原動力です。
+                  システム開発も編み物も、「使う人のことを考えながら一つひとつ積み上げていく」という点で共通しています。
+                  物理学で学んだ論理的思考と、手仕事で培った細かな配慮。この両方を活かして、
+                  「変化を楽しみ、新しいことに挑戦し続ける」ことが私の原動力です。
                 </p>
               </div>
             </div>
@@ -164,9 +168,9 @@ import Footer from '../components/Footer.astro';
               <div class="flex items-center">
                 <div class="w-1/2 pr-8 text-right">
                   <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 shadow-sm border-2 border-blue-200">
-                    <h3 class="font-sans font-bold text-natural-brown mb-2">オフショア開発技術リーダー</h3>
+                    <h3 class="font-sans font-bold text-natural-brown mb-2">モバイルアプリ開発</h3>
                     <p class="text-sm text-gray-600 mb-3">2024年 - 2025年</p>
-                    <p class="text-gray-700">証券系モバイルアプリ開発・リリース、国内外開発チームの技術連携、React Native・Swift</p>
+                    <p class="text-gray-700">モバイルアプリ開発・リリース、React Native・Swiftでの実装経験</p>
                   </div>
                 </div>
                 <div class="w-8 h-8 bg-indigo-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center relative z-10">
@@ -185,7 +189,7 @@ import Footer from '../components/Footer.astro';
                   <div class="bg-gradient-to-r from-natural-light-green/20 to-vibrant-orange/20 rounded-xl p-6 shadow-sm border-2 border-vibrant-orange/30">
                     <h3 class="font-sans font-bold text-natural-brown mb-2">Wells合同会社 設立</h3>
                     <p class="text-sm text-gray-600 mb-3">2023年</p>
-                    <p class="text-gray-700">システム開発、コンサルティング、ハンドメイド事業、ワークショップ企画など多分野での挑戦を開始</p>
+                    <p class="text-gray-700">技術と手仕事、それぞれの長所を活かしたサービスで身近な課題解決へ</p>
                   </div>
                 </div>
               </div>
@@ -244,7 +248,7 @@ import Footer from '../components/Footer.astro';
                 </div>
                 <h3 class="font-sans font-bold text-natural-brown mb-3">技術で変える</h3>
                 <p class="text-gray-700 text-sm leading-relaxed">
-                  17年の開発経験で培った技術力を活かし、お客様の身近な課題をシステムで解決。
+                  豊富な開発経験で培った技術力を活かし、お客様の身近な課題をシステムで解決。
                   「新しい技術を積極的に利用したい」想いで、常に最新技術にチャレンジ。
                 </p>
               </div>
@@ -291,7 +295,7 @@ import Footer from '../components/Footer.astro';
                     </p>
                     <p class="flex items-start">
                       <span class="text-vibrant-orange mr-3 mt-1">•</span>
-                      <span>技術一辺倒ではなく、手仕事の温かさも大切にする二刀流のスタイル</span>
+                      <span>技術と手仕事、両方の特性を活かした独自のアプローチ</span>
                     </p>
                     <p class="flex items-start">
                       <span class="text-vibrant-orange mr-3 mt-1">•</span>
