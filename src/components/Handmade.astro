@@ -6,7 +6,6 @@ const products = [
     name: 'ペット用ニットウェア',
     description: 'バンダナ、ケープ、マフラーなど愛犬・愛猫のためのあたたかいニット製品',
     features: ['クリスマス限定', 'うさ耳フード付き', '北欧柄'],
-    price: '1,200円〜13,000円',
     images: [
       '/images/products/pet-wear/155704fe7e4c90313e05ea1fac58425ac1f42503.jpeg',
       '/images/products/pet-wear/23f54aa2a25f72f4c00adec41af51af7e4cb8399.jpeg',
@@ -19,7 +18,6 @@ const products = [
     name: 'リストウォーマー',
     description: 'リーフ柄、コスモス、螺旋編みなど様々なデザインの手首を温める小物',
     features: ['ウール・コットン素材', 'エメラルドグリーン', 'ターコイズ'],
-    price: '2,500円〜4,000円',
     images: [
       '/images/products/wrist-warmers/05c1ebd24ad37d3387394f3906e0a8c9ddb8e7d7.jpeg',
       '/images/products/wrist-warmers/3922ecae1386284ad174d4bd2992fdf6b9a44330.jpeg',
@@ -31,7 +29,6 @@ const products = [
     name: '編みぐるみ・季節小物',
     description: 'チューリップ、カーネーション、かぼちゃのおもちゃ、クリスマス靴下など',
     features: ['季節限定', 'インテリア', 'ペット用おもちゃ'],
-    price: '1,000円〜',
     images: [
       '/images/products/tulips/6576044701e8389906928293d85b22e7cad71b71.jpeg',
       '/images/products/tulips/77552593e30842b9023daa514c9697c7a720c002.jpeg',
@@ -109,7 +106,6 @@ const shopLinks = [
           />
           <div class="p-6">
             <h3 class="text-xl font-bold text-natural-brown mb-2">{product.name}</h3>
-            <p class="text-vibrant-orange font-semibold mb-3">{product.price}</p>
             <p class="text-gray-600 mb-4">{product.description}</p>
             <div class="flex flex-wrap gap-2">
               {product.features.map((feature) => (
@@ -134,7 +130,7 @@ const shopLinks = [
             <h4 class="font-bold text-natural-green mb-2">{shop.name}</h4>
             <p class="text-gray-600 text-sm mb-3">{shop.description}</p>
             <span class="inline-block text-vibrant-orange hover:text-light-orange transition-colors font-medium">
-              ショップを見る →
+              商品・価格を見る →
             </span>
           </a>
         ))}
