@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Wells合同会社 - システム開発とハンドメイド小物販売' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Wells合同会社</title>
+    
+    <meta property="og:title" content={`${title} | Wells合同会社`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Wells合同会社`} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class="bg-white min-h-screen">
+    <slot />
+  </body>
+</html>
+

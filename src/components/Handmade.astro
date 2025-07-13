@@ -1,0 +1,99 @@
+---
+const products = [
+  {
+    name: 'ペット用ニットウェア',
+    description: '愛犬・愛猫のためのあたたかいニットウェア。サイズオーダー可能です',
+    features: ['かぎ針編み', '棒針編み', 'オーダーメイド'],
+    image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=300&fit=crop&crop=center'
+  },
+  {
+    name: '編みぐるみ',
+    description: 'かわいい動物や季節のモチーフを編みぐるみに。贈り物にも最適です',
+    features: ['オリジナルデザイン', 'ギフト対応', '名入れ可能'],
+    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop&crop=center'
+  },
+  {
+    name: '毛糸小物',
+    description: 'ポーチ、コースター、アクセサリーなど日常使いの小物たち',
+    features: ['実用的', 'カラフル', 'ナチュラル素材'],
+    image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=300&fit=crop&crop=center'
+  }
+];
+
+const shopLinks = [
+  {
+    name: 'Square オンラインショップ',
+    url: 'https://megusunulab.square.site/',
+    description: 'メインの販売サイト'
+  },
+  {
+    name: 'minne',
+    url: 'https://minne.com/@megusunu0120',
+    description: 'ハンドメイドマーケット'
+  }
+];
+---
+
+<section id="handmade" class="py-20 bg-gradient-to-b from-warm-yellow/10 to-natural-beige/20">
+  <div class="section-padding">
+    <div class="text-center mb-16 fade-in">
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-natural-brown mb-4">
+        ハンドメイド作品
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        一つひとつ心を込めて編んだ、あたたかい毛糸の作品たち
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      {products.map((product) => (
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+          <div class="h-48 bg-natural-beige/50 overflow-hidden">
+            <img src={product.image} alt={product.name} class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-natural-brown mb-3">{product.name}</h3>
+            <p class="text-gray-600 mb-4">{product.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {product.features.map((feature) => (
+                <span class="bg-warm-yellow/30 text-natural-brown px-3 py-1 rounded-full text-sm">
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+      <h3 class="text-2xl font-bold text-natural-brown mb-6 text-center">オンラインショップ</h3>
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        {shopLinks.map((shop) => (
+          <a href={shop.url} target="_blank" rel="noopener noreferrer" 
+             class="block bg-natural-beige/30 rounded-xl p-6 hover:bg-natural-beige/50 transition-colors">
+            <h4 class="font-bold text-natural-green mb-2">{shop.name}</h4>
+            <p class="text-gray-600 text-sm">{shop.description}</p>
+            <span class="inline-block mt-2 text-natural-green">
+              ショップを見る →
+            </span>
+          </a>
+        ))}
+      </div>
+      
+      <div class="text-center">
+        <p class="text-gray-600 mb-4">
+          SNSでも作品情報を発信しています
+        </p>
+        <div class="flex justify-center gap-4">
+          <span class="inline-block bg-natural-light-green/30 px-4 py-2 rounded-full text-natural-green">
+            Instagram: @megusunu
+          </span>
+          <span class="inline-block bg-natural-light-green/30 px-4 py-2 rounded-full text-natural-green">
+            X: @megusunu
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

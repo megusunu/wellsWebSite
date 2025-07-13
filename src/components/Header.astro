@@ -1,0 +1,67 @@
+---
+const navItems = [
+  { href: '#home', label: 'ホーム' },
+  { href: '#services', label: 'システム開発' },
+  { href: '#handmade', label: 'ハンドメイド' },
+  { href: '#contact', label: 'お問い合わせ' },
+];
+---
+
+<header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+  <nav class="section-padding py-4">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-serif font-bold text-natural-green hover:text-natural-light-green transition-colors">
+        Wells
+      </a>
+      
+      <button id="mobile-menu-button" class="md:hidden p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      
+      <ul class="hidden md:flex space-x-8">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="text-gray-700 hover:text-natural-green transition-colors font-medium">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <ul id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="block py-2 text-gray-700 hover:text-natural-green transition-colors font-medium">
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          mobileMenu?.classList.add('hidden');
+        }
+      }
+    });
+  });
+</script>

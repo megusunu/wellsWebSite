@@ -1,0 +1,85 @@
+---
+const services = [
+  {
+    title: 'Webアプリケーション開発',
+    description: 'React、Vue.jsを使用したモダンなWebアプリケーションを開発します',
+    techs: ['React', 'Vue.js', 'TypeScript', 'Next.js'],
+    icon: '💻',
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop&crop=center'
+  },
+  {
+    title: 'モバイルアプリ開発',
+    description: 'React Native、Swift、Android Studioでスマートフォンアプリを開発します',
+    techs: ['React Native', 'Swift', 'Android Studio', 'Flutter'],
+    icon: '📱',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=center'
+  },
+  {
+    title: 'システム移行・保守',
+    description: 'WixからWordPressへの移行など、既存システムの改善をサポートします',
+    techs: ['WordPress', 'データ移行', 'リリース管理', '保守運用'],
+    icon: '🔧',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop&crop=center'
+  }
+];
+
+const recentProjects = [
+  'ECサイトのWixからWordPressへの移行',
+  'React Nativeを使用した在庫管理アプリ開発',
+  'Vue.jsによる予約システムの構築'
+];
+---
+
+<section id="services" class="py-20 bg-white">
+  <div class="section-padding">
+    <div class="text-center mb-16 fade-in">
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-natural-green mb-4">
+        システム開発
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        最新技術を活用し、お客様のビジネスに最適なソリューションを提供します
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      {services.map((service) => (
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+          <div class="h-48 overflow-hidden">
+            <img src={service.image} alt={service.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <span class="text-3xl mr-3">{service.icon}</span>
+              <h3 class="text-xl font-bold text-natural-brown">{service.title}</h3>
+            </div>
+            <p class="text-gray-700 mb-6">{service.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {service.techs.map((tech) => (
+                <span class="bg-natural-light-green/50 text-natural-green px-3 py-1 rounded-full text-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="bg-gradient-to-r from-natural-light-green/20 to-warm-yellow/20 rounded-2xl p-8 md:p-12">
+      <h3 class="text-2xl font-bold text-natural-brown mb-6">最近の実績</h3>
+      <ul class="space-y-3">
+        {recentProjects.map((project) => (
+          <li class="flex items-start">
+            <span class="text-natural-green mr-3">✓</span>
+            <span class="text-gray-700">{project}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-8">
+        <a href="#contact" class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-natural-light-green transition-colors font-medium">
+          お見積もり・ご相談はこちら
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
