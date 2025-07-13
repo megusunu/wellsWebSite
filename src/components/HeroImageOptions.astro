@@ -1,0 +1,61 @@
+---
+// 背景画像の候補リスト
+const imageOptions = [
+  {
+    url: "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=1920&h=1080&fit=crop&crop=center",
+    description: "明るい草原を歩く人 - 自由で開放的な挑戦"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1920&h=1080&fit=crop&crop=center",
+    description: "朝日の中でジャンプする人 - ポジティブな挑戦"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1502101872923-d48509bff386?w=1920&h=1080&fit=crop&crop=center",
+    description: "手を広げて空を仰ぐ人 - 自由と可能性"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=1920&h=1080&fit=crop&crop=center",
+    description: "緑豊かな自然 - ナチュラルで穏やか"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1080&fit=crop&crop=center",
+    description: "森の中の光 - 希望と成長"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop&crop=center",
+    description: "笑顔の人 - 親しみやすさとポジティブ"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1920&h=1080&fit=crop&crop=center",
+    description: "新緑の葉 - 成長と柔軟性"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1500206329404-5057e0aefa48?w=1920&h=1080&fit=crop&crop=center",
+    description: "青空と雲 - 無限の可能性"
+  }
+];
+
+// 現在選択中のインデックス（変更したい場合はここを変更）
+const selectedIndex = 0;
+---
+
+<!-- 画像選択プレビュー（開発時のみ表示） -->
+<div class="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 max-w-xs z-50 hidden">
+  <h3 class="font-bold mb-2">背景画像の候補</h3>
+  <div class="space-y-2">
+    {imageOptions.map((option, index) => (
+      <div class="flex items-center space-x-2">
+        <input type="radio" name="bgImage" value={index} checked={index === selectedIndex} />
+        <label class="text-sm">{option.description}</label>
+      </div>
+    ))}
+  </div>
+  <p class="text-xs text-gray-500 mt-2">
+    選択した画像のURLをHero.astroに適用してください
+  </p>
+</div>
+
+<!-- 実際に使用する画像URLを出力 -->
+<script define:vars={{ selectedUrl: imageOptions[selectedIndex].url }}>
+  console.log('Selected Hero Background Image:', selectedUrl);
+</script>
