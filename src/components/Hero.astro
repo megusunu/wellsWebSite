@@ -12,7 +12,7 @@
     <div class="absolute inset-0 bg-gradient-to-br from-natural-brown/40 via-natural-green/30 to-vibrant-orange/20"></div>
   </div>
   
-  <div class="relative z-10 text-center max-w-5xl mx-auto px-6">
+  <div class="relative z-10 text-center max-w-6xl mx-auto px-6">
     <!-- Logo -->
     <div class="mb-8 flex justify-center fade-in">
       <img 
@@ -23,47 +23,77 @@
       />
     </div>
     
-    <!-- Main Message -->
+    <!-- Company Introduction -->
     <div class="mb-8 fade-in-delayed">
-      <p class="text-lg md:text-xl text-white/90 mb-4 font-medium drop-shadow-lg">
-        「半径3メートルを変えられないと世界は変わらない」
-      </p>
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-sans font-black text-white mb-6 drop-shadow-2xl tracking-tight leading-tight">
         Wells合同会社
       </h1>
-      <p class="text-lg md:text-xl text-white/95 mb-2 font-medium drop-shadow-lg">
-        代表 草間恵
+      <p class="text-lg md:text-xl text-white/95 mb-4 font-medium drop-shadow-lg">
+        東京都渋谷区
       </p>
     </div>
     
-    <!-- Value Proposition -->
+    <!-- Company Mission -->
     <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 mb-8 border border-white/20 fade-in-more-delayed">
-      <p class="text-lg md:text-xl text-white mb-4 leading-relaxed">
-        17年のシステム開発経験と「なんでもやってみたい」精神で
-      </p>
       <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-4">
-        技術とハンドメイドの二刀流
+        技術とハンドメイドで、想いをカタチに
       </h2>
-      <p class="text-white/90 leading-relaxed">
-        物理学科出身のシステムエンジニアが、論理的思考と感性豊かな手仕事で<br class="hidden md:block" />
-        あなたの「想い」をカタチにします
+      <p class="text-lg text-white mb-4 leading-relaxed">
+        システム開発から手編み作品まで、お客様の多様なニーズにお応えします
       </p>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-white/10 rounded-lg p-4">
+          <div class="text-2xl mb-2">💻</div>
+          <h3 class="font-bold text-white mb-1">システム開発</h3>
+          <p class="text-white/80">17年の経験に基づく確かな技術力</p>
+        </div>
+        <div class="bg-white/10 rounded-lg p-4">
+          <div class="text-2xl mb-2">🧶</div>
+          <h3 class="font-bold text-white mb-1">ハンドメイド</h3>
+          <p class="text-white/80">心を込めた手編み作品とワークショップ</p>
+        </div>
+        <div class="bg-white/10 rounded-lg p-4">
+          <div class="text-2xl mb-2">🎯</div>
+          <h3 class="font-bold text-white mb-1">コンサルティング</h3>
+          <p class="text-white/80">技術選定から開発プロセス改善まで</p>
+        </div>
+      </div>
     </div>
     
     <!-- CTA Buttons -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 fade-in-most-delayed">
-      <a href="#about" 
-         class="bg-vibrant-orange text-white px-8 py-4 rounded-full hover:bg-light-orange transition-all font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 border-2 border-transparent hover:border-white/30">
-        草間恵について知る
-      </a>
       <a href="#services" 
          class="bg-natural-green text-white px-8 py-4 rounded-full hover:bg-natural-light-green transition-all font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 border-2 border-transparent hover:border-white/30">
-        システム開発の実績
+        システム開発について
       </a>
       <a href="#handmade" 
-         class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/30 transition-all font-medium shadow-lg border-2 border-white/30 hover:border-white/50">
+         class="bg-vibrant-orange text-white px-8 py-4 rounded-full hover:bg-light-orange transition-all font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 border-2 border-transparent hover:border-white/30">
         ハンドメイド作品
       </a>
+      <a href="/about-ceo" 
+         class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/30 transition-all font-medium shadow-lg border-2 border-white/30 hover:border-white/50">
+        代表について
+      </a>
+    </div>
+    
+    <!-- Company Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 fade-in-stats">
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold text-white">17年</div>
+        <div class="text-sm text-white/80">開発経験</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold text-white">2023年</div>
+        <div class="text-sm text-white/80">会社設立</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold text-white">多数</div>
+        <div class="text-sm text-white/80">実績</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold text-white">地域密着</div>
+        <div class="text-sm text-white/80">ワークショップ</div>
+      </div>
     </div>
     
     <!-- Scroll Indicator -->
@@ -115,5 +145,10 @@
   .fade-in-most-delayed {
     opacity: 0;
     animation: fadeIn 0.8s ease-out 0.9s forwards;
+  }
+
+  .fade-in-stats {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 1.2s forwards;
   }
 </style>
