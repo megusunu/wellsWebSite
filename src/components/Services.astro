@@ -2,31 +2,80 @@
 const services = [
   {
     title: 'Webアプリケーション開発',
-    description: 'React、Vue.jsを使用したモダンなWebアプリケーションを開発します',
-    techs: ['React', 'Vue.js', 'TypeScript', 'Next.js'],
+    description: '17年の経験を活かし、React、Vue.jsを使用したモダンなWebアプリケーションを開発。新しい技術への挑戦を楽しみながら、お客様のビジネスを成功に導きます。',
+    techs: ['React', 'Vue.js', 'TypeScript', 'Next.js', 'Astro'],
     icon: '💻',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop&crop=center'
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop&crop=center',
+    examples: ['ECサイト構築', 'SaaS開発', 'レガシーシステム刷新']
   },
   {
     title: 'モバイルアプリ開発',
-    description: 'React Native、Swift、Android Studioでスマートフォンアプリを開発します',
+    description: 'React Native、Swift、Android Studioでスマートフォンアプリを開発。物理学科出身の論理的思考で、ユーザビリティの高いアプリを設計します。',
     techs: ['React Native', 'Swift', 'Android Studio', 'Flutter'],
     icon: '📱',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=center'
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=center',
+    examples: ['在庫管理アプリ', 'コミュニケーションツール', 'ECアプリ']
   },
   {
     title: 'システム移行・保守',
-    description: 'WixからWordPressへの移行など、既存システムの改善をサポートします',
+    description: 'WixからWordPressへの移行など、既存システムの改善をサポート。「目先がどんどん変わるプロジェクト」を得意とし、柔軟な対応でお客様の課題を解決します。',
     techs: ['WordPress', 'データ移行', 'リリース管理', '保守運用'],
     icon: '🔧',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop&crop=center'
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop&crop=center',
+    examples: ['ECサイト移行', 'パフォーマンス改善', 'セキュリティ強化']
+  },
+  {
+    title: '技術コンサルティング',
+    description: '17年の開発経験と物理学的思考で、技術選定から開発プロセス改善まで幅広くコンサルティング。お客様の「なんでもやってみたい」想いを技術で実現します。',
+    techs: ['技術選定', 'アーキテクチャ設計', 'DX推進', 'チーム支援'],
+    icon: '🎯',
+    image: 'https://images.unsplash.com/photo-1553028826-f4804a6dfd3f?w=400&h=250&fit=crop&crop=center',
+    examples: ['技術選定支援', '開発体制構築', 'DX戦略立案']
+  }
+];
+
+const futureServices = [
+  {
+    title: '技術書・電子出版',
+    description: '技術書同人誌の経験を活かし、技術知識を分かりやすく伝える書籍・電子出版物を企画・制作します。',
+    icon: '📚',
+    status: '準備中'
+  },
+  {
+    title: 'イベント企画・運営',
+    description: 'ハンドメイドマルシェ参加の経験を活かし、技術者向けイベントやワークショップを企画・運営します。',
+    icon: '🎪',
+    status: '準備中'
+  },
+  {
+    title: '映像配信・メディア',
+    description: '技術解説動画や開発プロセスの配信など、新しい形での技術情報発信を検討中です。',
+    icon: '📹',
+    status: '構想中'
   }
 ];
 
 const recentProjects = [
-  'ECサイトのWixからWordPressへの移行',
-  'React Nativeを使用した在庫管理アプリ開発',
-  'Vue.jsによる予約システムの構築'
+  {
+    title: 'ECサイトのWixからWordPressへの移行',
+    description: '既存顧客データを保持しながら、SEO性能と管理性を大幅改善',
+    tech: 'WordPress, PHP, MySQL'
+  },
+  {
+    title: 'React Nativeを使用した在庫管理アプリ開発',
+    description: 'リアルタイム在庫追跡とバーコード連携で業務効率化を実現',
+    tech: 'React Native, Firebase, QRコード'
+  },
+  {
+    title: 'Vue.jsによる予約システムの構築',
+    description: 'ユーザビリティを重視したレスポンシブ対応の予約管理システム',
+    tech: 'Vue.js, Node.js, PostgreSQL'
+  },
+  {
+    title: 'Wells合同会社ホームページ',
+    description: 'Astro + TypeScript + TailwindCSSで構築した高性能サイト',
+    tech: 'Astro, TypeScript, TailwindCSS'
+  }
 ];
 ---
 
@@ -41,7 +90,7 @@ const recentProjects = [
       </p>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8 mb-16">
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
       {services.map((service) => (
         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
           <div class="h-48 overflow-hidden">
@@ -52,7 +101,22 @@ const recentProjects = [
               <span class="text-3xl mr-3">{service.icon}</span>
               <h3 class="text-xl font-bold text-natural-brown">{service.title}</h3>
             </div>
-            <p class="text-gray-700 mb-6">{service.description}</p>
+            <p class="text-gray-700 mb-4 leading-relaxed">{service.description}</p>
+            
+            {service.examples && (
+              <div class="mb-4">
+                <p class="text-sm font-medium text-natural-brown mb-2">実装例:</p>
+                <div class="space-y-1">
+                  {service.examples.map((example) => (
+                    <p class="text-sm text-gray-600 flex items-center">
+                      <span class="text-vibrant-orange mr-2">▶</span>
+                      {example}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             <div class="flex flex-wrap gap-2">
               {service.techs.map((tech) => (
                 <span class="bg-natural-light-green/50 text-natural-green px-3 py-1 rounded-full text-sm">
@@ -65,18 +129,54 @@ const recentProjects = [
       ))}
     </div>
     
-    <div class="bg-gradient-to-r from-natural-light-green/20 to-warm-yellow/20 rounded-2xl p-8 md:p-12">
-      <h3 class="text-2xl font-sans font-bold text-natural-brown mb-6">最近の実績</h3>
-      <ul class="space-y-3">
-        {recentProjects.map((project) => (
-          <li class="flex items-start">
-            <span class="text-natural-green mr-3">✓</span>
-            <span class="text-gray-700">{project}</span>
-          </li>
+    <!-- Future Services Section -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-sans font-bold text-natural-brown text-center mb-8">
+        定款に基づく将来展開予定事業
+      </h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        {futureServices.map((service) => (
+          <div class="bg-gradient-to-br from-warm-yellow/10 to-natural-beige/20 rounded-xl p-6 border border-warm-yellow/30">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">{service.icon}</span>
+              <span class="bg-warm-yellow/40 text-natural-brown px-2 py-1 rounded-full text-xs font-medium">
+                {service.status}
+              </span>
+            </div>
+            <h4 class="font-sans font-bold text-natural-brown mb-2">{service.title}</h4>
+            <p class="text-gray-700 text-sm leading-relaxed">{service.description}</p>
+          </div>
         ))}
-      </ul>
-      <div class="mt-8">
-        <a href="#contact" class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-natural-light-green transition-colors font-medium">
+      </div>
+    </div>
+    
+    <div class="bg-gradient-to-r from-natural-light-green/20 to-warm-yellow/20 rounded-2xl p-8 md:p-12">
+      <h3 class="text-2xl font-sans font-bold text-natural-brown mb-6 text-center">
+        最近の実績・プロジェクト
+      </h3>
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        {recentProjects.map((project) => (
+          <div class="bg-white/60 rounded-xl p-4 backdrop-blur-sm">
+            <h4 class="font-sans font-bold text-natural-brown mb-2 flex items-start">
+              <span class="text-natural-green mr-2 mt-1">✓</span>
+              {project.title}
+            </h4>
+            <p class="text-gray-700 text-sm mb-3 leading-relaxed ml-6">{project.description}</p>
+            <div class="ml-6">
+              <span class="bg-natural-green/20 text-natural-green px-2 py-1 rounded text-xs font-medium">
+                {project.tech}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center">
+        <p class="text-gray-700 mb-4">
+          17年の開発経験と「なんでもやってみたい」精神で、<br>
+          お客様の「想い」を技術で実現いたします。
+        </p>
+        <a href="#contact" class="inline-block bg-natural-green text-white px-8 py-4 rounded-full hover:bg-vibrant-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
           お見積もり・ご相談はこちら
         </a>
       </div>

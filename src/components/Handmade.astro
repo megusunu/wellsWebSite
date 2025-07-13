@@ -58,12 +58,44 @@ const shopLinks = [
 <section id="handmade" class="py-20 bg-gradient-to-b from-warm-yellow/10 to-natural-beige/20">
   <div class="section-padding">
     <div class="text-center mb-16 fade-in">
-      <h2 class="text-4xl md:text-5xl font-sans font-black text-natural-brown mb-4">
+      <h2 class="text-4xl md:text-5xl font-sans font-black text-natural-brown mb-6">
         ハンドメイド作品
       </h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        一つひとつ心を込めて編んだ、あたたかい毛糸の作品たち
-      </p>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xl text-gray-700 mb-4 leading-relaxed">
+          社会人生のセーフティーネットと趣味+αの活動として始めたハンドメイド。
+        </p>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          「多少採算が取れなくてもいいか」という想いで始めた編み物が、<br class="hidden md:block" />
+          今では技術と同じくらい大切な私の一面になりました。
+        </p>
+      </div>
+    </div>
+    
+    <!-- ハンドメイドへの想い -->
+    <div class="bg-gradient-to-r from-warm-yellow/10 to-natural-beige/20 rounded-2xl p-8 md:p-12 mb-16 fade-in">
+      <div class="max-w-4xl mx-auto text-center">
+        <h3 class="text-2xl font-sans font-bold text-natural-brown mb-6">
+          システムエンジニアが編み物をする理由
+        </h3>
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+          <div class="bg-white/60 rounded-xl p-6">
+            <div class="text-3xl mb-3">🧠</div>
+            <h4 class="font-bold text-natural-brown mb-2">論理と感性のバランス</h4>
+            <p class="text-gray-700 text-sm">システム開発の論理的思考と、編み物の感性的な作業が、私の中で絶妙なバランスを保っています。</p>
+          </div>
+          <div class="bg-white/60 rounded-xl p-6">
+            <div class="text-3xl mb-3">🔄</div>
+            <h4 class="font-bold text-natural-brown mb-2">変化への柔軟性</h4>
+            <p class="text-gray-700 text-sm">「なんでもやってみたい」精神で新しい技法や素材に挑戦し、常に学び続けています。</p>
+          </div>
+          <div class="bg-white/60 rounded-xl p-6">
+            <div class="text-3xl mb-3">❤️</div>
+            <h4 class="font-bold text-natural-brown mb-2">想いをカタチに</h4>
+            <p class="text-gray-700 text-sm">システムも編み物も、「使う人に喜んでもらいたい」という想いが根底にあります。</p>
+          </div>
+        </div>
+      </div>
     </div>
     
     <div class="grid md:grid-cols-3 gap-8 mb-16">
@@ -92,23 +124,37 @@ const shopLinks = [
     </div>
     
     <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-      <h3 class="text-2xl font-sans font-bold text-natural-brown mb-6 text-center">オンラインショップ</h3>
+      <h3 class="text-2xl font-sans font-bold text-natural-brown mb-6 text-center">オンラインショップと活動</h3>
+      
+      <!-- ショップリンク -->
       <div class="grid md:grid-cols-2 gap-6 mb-8">
         {shopLinks.map((shop) => (
           <a href={shop.url} target="_blank" rel="noopener noreferrer" 
              class="block bg-natural-beige/30 rounded-xl p-6 hover:bg-natural-beige/50 transition-colors">
             <h4 class="font-bold text-natural-green mb-2">{shop.name}</h4>
-            <p class="text-gray-600 text-sm">{shop.description}</p>
-            <span class="inline-block mt-2 text-vibrant-orange hover:text-light-orange transition-colors">
+            <p class="text-gray-600 text-sm mb-3">{shop.description}</p>
+            <span class="inline-block text-vibrant-orange hover:text-light-orange transition-colors font-medium">
               ショップを見る →
             </span>
           </a>
         ))}
       </div>
       
+      <!-- マルシェ活動 -->
+      <div class="bg-gradient-to-r from-vibrant-orange/10 to-warm-yellow/20 rounded-xl p-6 mb-8">
+        <h4 class="font-sans font-bold text-natural-brown mb-3 flex items-center">
+          <span class="text-2xl mr-2">🎪</span>
+          ハンドメイドマルシェ参加
+        </h4>
+        <p class="text-gray-700 text-sm leading-relaxed">
+          オンライン販売だけではなく、実際にお客様とお話ししながら作品をお届けするイベントにも積極的に参加しています。お客様の笑顔を直接見られるのが、作り手としての一番の喜びです。
+        </p>
+      </div>
+      
       <div class="text-center">
-        <p class="text-gray-600 mb-4">
-          SNSでも作品情報を発信しています
+        <p class="text-gray-600 mb-4 leading-relaxed">
+          日々の制作過程や技術の学び、生活の中での小さな気づきを<br class="hidden md:block" />
+          SNSで共有しています。同じように「なんでもやってみたい」と思っている方とつながりたいです。
         </p>
         <div class="flex justify-center gap-4">
           <a href="https://instagram.com/megusunu" target="_blank" rel="noopener noreferrer" 

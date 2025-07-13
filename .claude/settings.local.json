@@ -4,7 +4,8 @@
       "Bash(npm create:*)",
       "Bash(mkdir:*)",
       "Bash(ls:*)",
-      "WebFetch(domain:minne.com)"
+      "WebFetch(domain:minne.com)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
