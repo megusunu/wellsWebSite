@@ -6,7 +6,14 @@ const currentYear = new Date().getFullYear();
   <div class="section-padding">
     <div class="grid md:grid-cols-3 gap-8 mb-8">
       <div>
-        <h3 class="text-2xl font-serif font-bold mb-4">Wells合同会社</h3>
+        <div class="flex items-center space-x-3 mb-4">
+          <img 
+            src="/images/logo/1x/wellslogo_white.png" 
+            alt="Wells合同会社" 
+            class="h-8 w-auto"
+            srcset="/images/logo/1x/wellslogo_white.png 1x, /images/logo/2x/wellslogo_white@2x.png 2x, /images/logo/4x/wellslogo_white@4x.png 4x"
+          />
+        </div>
         <p class="text-natural-beige/80">
           システム開発とハンドメイドで<br />
           あなたの「想い」をカタチにします
@@ -14,7 +21,7 @@ const currentYear = new Date().getFullYear();
       </div>
       
       <div>
-        <h4 class="font-bold mb-4">サービス</h4>
+        <h4 class="font-sans font-bold mb-4">サービス</h4>
         <ul class="space-y-2 text-natural-beige/80">
           <li>
             <a href="#services" class="hover:text-white transition-colors">
@@ -35,7 +42,7 @@ const currentYear = new Date().getFullYear();
       </div>
       
       <div>
-        <h4 class="font-bold mb-4">外部リンク</h4>
+        <h4 class="font-sans font-bold mb-4">外部リンク</h4>
         <ul class="space-y-2 text-natural-beige/80">
           <li>
             <a href="https://megusunulab.square.site/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
