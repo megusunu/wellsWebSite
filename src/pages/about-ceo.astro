@@ -233,12 +233,22 @@ import Footer from '../components/Footer.astro';
             <div class="flex justify-center mb-12 fade-in">
               <div class="relative">
                 <!-- 3m radius visualization -->
-                <div class="w-96 h-96 border-4 border-dashed border-natural-green/30 rounded-full flex items-center justify-center">
-                  <div class="w-48 h-48 bg-gradient-to-br from-vibrant-orange/20 to-warm-yellow/30 rounded-full flex items-center justify-center border-4 border-vibrant-orange/40">
+                <div class="w-96 h-96 relative">
+                  <!-- Outer ripple effects -->
+                  <div class="absolute inset-0 rounded-full bg-gradient-to-r from-natural-green/10 to-natural-light-green/10 animate-pulse"></div>
+                  <div class="absolute inset-4 rounded-full bg-gradient-to-r from-natural-green/15 to-natural-light-green/15 animate-pulse" style="animation-delay: 0.5s;"></div>
+                  <div class="absolute inset-8 rounded-full bg-gradient-to-r from-natural-green/20 to-natural-light-green/20 animate-pulse" style="animation-delay: 1s;"></div>
+                  
+                  <!-- Main circle with enhanced design -->
+                  <div class="absolute inset-16 rounded-full bg-gradient-to-br from-vibrant-orange/30 to-warm-yellow/40 shadow-2xl border-4 border-vibrant-orange/60 flex items-center justify-center backdrop-blur-sm">
                     <div class="text-center">
-                      <div class="text-4xl mb-2">👩‍💻</div>
-                      <p class="font-sans font-bold text-natural-brown text-lg">草間恵</p>
-                      <p class="text-sm text-gray-600">半径3メートル</p>
+                      <div class="w-20 h-20 rounded-full overflow-hidden mx-auto border-4 border-white shadow-lg">
+                        <img 
+                          src="/images/profile.jpg" 
+                          alt="草間恵" 
+                          class="w-full h-full object-cover"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
