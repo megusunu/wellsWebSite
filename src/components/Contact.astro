@@ -108,6 +108,43 @@
   const form = document.querySelector('form');
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('お問い合わせフォームの実装が必要です。メール送信機能を追加してください。');
+    
+    // フォームデータを取得
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+    
+    // お問い合わせ種別の日本語表示
+    const subjectLabels = {
+      'development': 'システム開発のお問い合わせ',
+      'consulting': '技術サポート',
+      'handmade': 'ハンドメイド作品・オーダー',
+      'workshop': 'ワークショップ・イベント企画',
+      'collaboration': 'コラボレーションのご提案',
+      'other': 'その他'
+    };
+    
+    const subjectLabel = subjectLabels[subject] || subject;
+    
+    // メール本文を作成
+    const emailBody = `
+お名前: ${name}
+メールアドレス: ${email}
+お問い合わせ種別: ${subjectLabel}
+
+お問い合わせ内容:
+${message}
+
+---
+このメールはWells合同会社のお問い合わせフォームから送信されました。
+    `.trim();
+    
+    // mailto URLを作成
+    const mailtoUrl = `mailto:megumi.kusama@wells.jp?subject=${encodeURIComponent(`【${subjectLabel}】 ${name}様からのお問い合わせ`)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // メールクライアントを開く
+    window.location.href = mailtoUrl;
   });
 </script>
