@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://megusunu.github.io',
-  base: '/wells_homepage',
+  base: '/wellsWebSite',
   integrations: [tailwind()],
   markdown: {
     syntaxHighlight: 'shiki',
