@@ -1,0 +1,217 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allNews = await getCollection('news', ({ data }) => {
+    return data.draft !== true;
+  });
+
+  // すべてのタグを収集
+  const allTags = new Set();
+  allNews.forEach(entry => {
+    if (entry.data.tags) {
+      entry.data.tags.forEach(tag => allTags.add(tag));
+    }
+  });
+
+  // タグごとのページを生成
+  return Array.from(allTags).map(tag => ({
+    params: { tag },
+    props: { 
+      tag,
+      entries: allNews.filter(entry => 
+        entry.data.tags && entry.data.tags.includes(tag)
+      )
+    }
+  }));
+}
+
+const { tag, entries } = Astro.props;
+
+// カテゴリ別の色定義
+const getCategoryColor = (category: string) => {
+  const colors = {
+    news: 'natural-green',
+    blog: 'vibrant-orange', 
+    project: 'natural-brown',
+    event: 'warm-yellow',
+    update: 'natural-light-green'
+  };
+  return colors[category as keyof typeof colors] || 'natural-green';
+};
+
+// カテゴリ別の日本語表示
+const getCategoryLabel = (category: string) => {
+  const labels = {
+    news: 'ニュース',
+    blog: 'コラム',
+    project: 'プロジェクト',
+    event: 'イベント',
+    update: 'アップデート'
+  };
+  return labels[category as keyof typeof labels] || category;
+};
+
+// 日付順でソート
+const sortedEntries = entries.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout title={`${tag} | お知らせ・更新情報`} description={`${tag}に関する記事一覧です。`}>
+  <Header />
+  <main class="pt-20">
+    <!-- パンくずナビ -->
+    <nav class="py-4 bg-natural-beige/20" aria-label="パンくずナビゲーション">
+      <div class="section-padding">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li><a href="/" class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
+          <li class="text-gray-400">/</li>
+          <li><a href="/news/" class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
+          <li class="text-gray-400">/</li>
+          <li class="text-gray-600">タグ：{tag}</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ヘッダー -->
+    <header class="py-12 bg-gradient-to-b from-natural-beige/30 to-white">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-block bg-natural-green/10 text-natural-green px-4 py-2 rounded-full text-sm font-medium mb-4">
+            #{tag}
+          </div>
+          <h1 class="text-3xl md:text-4xl font-sans font-black text-natural-brown mb-4">
+            「{tag}」に関する記事
+          </h1>
+          <p class="text-xl text-gray-700">
+            {sortedEntries.length}件の記事があります
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- 記事一覧 -->
+    <section class="py-16 bg-white">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto">
+          {sortedEntries.length > 0 ? (
+            <div class="grid gap-8">
+              {sortedEntries.map((entry) => (
+                <article class="bg-natural-beige/20 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                  <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <span class={`inline-block px-3 py-1 rounded-full text-sm font-medium text-white bg-${getCategoryColor(entry.data.category)}`}>
+                      {getCategoryLabel(entry.data.category)}
+                    </span>
+                    <time class="text-sm text-gray-500" datetime={entry.data.date.toISOString()}>
+                      {entry.data.date.toLocaleDateString('ja-JP', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                    {entry.data.featured && (
+                      <span class="inline-block px-2 py-1 rounded text-xs font-medium text-vibrant-orange bg-vibrant-orange/10">
+                        注目記事
+                      </span>
+                    )}
+                  </div>
+                  
+                  <h2 class="text-xl font-bold text-natural-brown mb-3 line-clamp-2">
+                    <a href={`/news/${entry.slug}/`} class="hover:text-vibrant-orange transition-colors">
+                      {entry.data.title}
+                    </a>
+                  </h2>
+                  
+                  <p class="text-gray-600 mb-4 line-clamp-3">
+                    {entry.data.description}
+                  </p>
+                  
+                  {entry.data.tags && entry.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {entry.data.tags.map((tagName) => (
+                        <a 
+                          href={`/news/tags/${tagName}/`}
+                          class={`bg-white/80 text-natural-brown px-2 py-1 rounded-full text-sm border border-natural-beige hover:bg-natural-green/10 transition-colors ${tagName === tag ? 'bg-natural-green/20' : ''}`}
+                        >
+                          #{tagName}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                  
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-500">
+                      by {entry.data.author}
+                    </span>
+                    <a 
+                      href={`/news/${entry.slug}/`}
+                      class="text-natural-green hover:text-vibrant-orange transition-colors font-medium text-sm"
+                    >
+                      続きを読む →
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="text-center py-12">
+              <p class="text-gray-500 text-lg mb-8">このタグの記事はまだありません。</p>
+              <a 
+                href="/news/"
+                class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-vibrant-orange transition-colors font-medium"
+              >
+                すべての記事を見る
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- 他のタグも見る -->
+    <section class="py-12 bg-natural-beige/20">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-2xl font-bold text-natural-brown mb-8">
+            他のタグも見る
+          </h2>
+          <div class="flex justify-center gap-4">
+            <a 
+              href="/news/"
+              class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-vibrant-orange transition-colors font-medium"
+            >
+              すべての記事
+            </a>
+            <a 
+              href="/#contact"
+              class="inline-block bg-white text-natural-green px-6 py-3 rounded-full hover:bg-natural-green hover:text-white transition-colors font-medium border border-natural-green"
+            >
+              お問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
