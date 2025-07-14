@@ -1,7 +1,7 @@
 ---
 title: "お知らせ・更新情報ページを開設しました"
 description: "Wells合同会社のWebサイトに、最新情報をお届けする「お知らせ・更新情報」ページを新設いたしました。"
-date: 2025-01-13
+date: 2025-07-13
 category: "news"
 tags: ["お知らせ", "Webサイト", "新機能"]
 featured: true
