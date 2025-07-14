@@ -5,8 +5,8 @@ const navItems = [
   { href: '#handmade', label: 'ハンドメイド' },
   { href: '/about-ceo', label: '代表について' },
   { href: '/news', label: 'お知らせ' },
-  { href: '#contact', label: 'お問い合わせ' },
   { href: '/company', label: '会社概要' },
+  { href: '#contact', label: 'お問い合わせ', isContact: true },
 ];
 ---
 
@@ -31,7 +31,10 @@ const navItems = [
       <ul class="hidden md:flex space-x-8">
         {navItems.map((item) => (
           <li>
-            <a href={item.href} class="text-gray-700 hover:text-vibrant-orange transition-colors font-medium">
+            <a href={item.href} class={item.isContact ? 
+              "bg-natural-green text-white px-6 py-2 rounded-full hover:bg-vibrant-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all" :
+              "text-gray-700 hover:text-vibrant-orange transition-colors font-medium"
+            }>
               {item.label}
             </a>
           </li>
@@ -42,7 +45,10 @@ const navItems = [
     <ul id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
       {navItems.map((item) => (
         <li>
-          <a href={item.href} class="block py-2 text-gray-700 hover:text-vibrant-orange transition-colors font-medium">
+          <a href={item.href} class={item.isContact ? 
+            "block py-2 px-4 mx-2 bg-natural-green text-white rounded-full hover:bg-vibrant-orange transition-colors font-medium text-center" :
+            "block py-2 text-gray-700 hover:text-vibrant-orange transition-colors font-medium"
+          }>
             {item.label}
           </a>
         </li>
