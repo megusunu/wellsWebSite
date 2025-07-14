@@ -117,7 +117,7 @@
     const message = formData.get('message');
     
     // お問い合わせ種別の日本語表示
-    const subjectLabels = {
+    const subjectLabels: Record<string, string> = {
       'development': 'システム開発のお問い合わせ',
       'consulting': '技術サポート',
       'handmade': 'ハンドメイド作品・オーダー',
@@ -126,7 +126,8 @@
       'other': 'その他'
     };
     
-    const subjectLabel = subjectLabels[subject] || subject;
+    const subjectStr = String(subject);
+    const subjectLabel = subjectLabels[subjectStr] || subjectStr;
     
     // メール本文を作成
     const emailBody = `

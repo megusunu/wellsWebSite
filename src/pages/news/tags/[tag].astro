@@ -19,11 +19,11 @@ export async function getStaticPaths() {
 
   // タグごとのページを生成
   return Array.from(allTags).map(tag => ({
-    params: { tag },
+    params: { tag: String(tag) },
     props: { 
-      tag,
+      tag: String(tag),
       entries: allNews.filter(entry => 
-        entry.data.tags && entry.data.tags.includes(tag)
+        entry.data.tags && entry.data.tags.includes(String(tag))
       )
     }
   }));
