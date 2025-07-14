@@ -2,7 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
   const newsEntries = await getCollection('news', ({ data }) => {
@@ -20,7 +21,9 @@ type Props = {
 };
 
 const { entry }: Props = Astro.props;
-const { Content } = await render(entry);
+
+// markedを使って手動でマークダウンをHTMLに変換
+const htmlContent = marked(entry.body);
 
 // カテゴリ別の色定義
 const getCategoryColor = (category: string) => {
@@ -124,8 +127,7 @@ const relatedNews = allNews
     <article class="py-16 bg-white">
       <div class="section-padding">
         <div class="max-w-4xl mx-auto">
-          <div class="markdown-content max-w-none">
-            <Content />
+          <div class="markdown-content max-w-none" set:html={htmlContent}>
           </div>
         </div>
       </div>
