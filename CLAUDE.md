@@ -8,6 +8,8 @@ Wells合同会社の公式ホームページ。システム開発とハンドメ
 - **フレームワーク**: Astro
 - **言語**: TypeScript
 - **CSS**: TailwindCSS
+- **コンテンツ管理**: Astro Content Collections
+- **マークダウン処理**: marked
 - **開発サーバー**: http://localhost:9000/
 
 ## ビジネス要件
@@ -77,11 +79,23 @@ colors: {
    - 「半径3メートル」の哲学（改善された可視化）
    - ロゴストーリー
 
+3. **お知らせ・更新情報** (`/news`)
+   - 記事一覧（カテゴリ別フィルタ）
+   - カテゴリ：news、blog、project、event、update
+   - タグ機能
+   - 著者別表示（草間恵 / Wells合同会社）
+
+4. **個別記事ページ** (`/news/[slug]`)
+   - マークダウン形式の記事表示
+   - カテゴリバッジ、タグ表示
+   - 著者情報（プロフィール付き）
+   - 関連記事表示
+
 ### コンポーネント構造
 ```
 src/
 ├── components/
-│   ├── Header.astro           # ナビゲーション
+│   ├── Header.astro           # ナビゲーション（お知らせリンク追加）
 │   ├── Hero.astro            # ヒーローセクション
 │   ├── Services.astro        # システム開発
 │   ├── Handmade.astro        # ハンドメイド
@@ -91,11 +105,22 @@ src/
 │   ├── ImageSlideshow.astro  # スライドショー
 │   ├── About.astro           # 代表について（旧）
 │   └── Philosophy.astro      # 哲学セクション
+├── content/
+│   ├── config.ts             # Content Collections設定
+│   └── news/                 # ニュース記事（マークダウン）
+│       ├── 2025-01-13-news-section-launch.md
+│       ├── 2025-01-13-why-engineers-knit.md
+│       └── 2025-01-14-new-service-technical-support.md
 ├── layouts/
 │   └── Layout.astro          # ベースレイアウト
-└── pages/
-    ├── index.astro           # メインページ
-    └── about-ceo.astro       # 代表についてページ
+├── pages/
+│   ├── index.astro           # メインページ
+│   ├── about-ceo.astro       # 代表についてページ
+│   ├── news/
+│   │   ├── index.astro       # ニュース一覧
+│   │   └── [...slug].astro   # 個別記事ページ
+└── styles/
+    └── global.css            # グローバルスタイル（マークダウン含む）
 ```
 
 ## 主要機能
@@ -272,6 +297,31 @@ npm run preview      # プレビューサーバー
    - モバイルメニューの状態管理改善
    - プロフィール画像alt属性の具体化
 
+### v2.3.0 - ニュース・ブログ機能追加
+1. **Content Collections実装**
+   - Astro Content Collectionsでマークダウン記事管理
+   - 5つのカテゴリ：news、blog、project、event、update
+   - フロントマター：title、description、date、category、tags、author、featured、draft
+
+2. **ニュース機能**
+   - ニュース一覧ページ（カテゴリ別フィルタ、検索機能）
+   - 個別記事ページ（マークダウンレンダリング、関連記事表示）
+   - 著者情報表示（草間恵 / Wells合同会社の使い分け）
+
+3. **マークダウン処理**
+   - markedライブラリ使用で確実なHTMLレンダリング
+   - global.cssでマークダウンスタイル統一
+   - 見出し、リスト、リンク、引用、コードブロック対応
+
+4. **ナビゲーション強化**
+   - ヘッダーに「お知らせ」リンク追加
+   - ページ構造の論理的順序（サービス→作品→お知らせ→問合せ→会社概要）
+
+5. **コンテンツ品質向上**
+   - 記事にTODOコメント追加（肉付けガイダンス）
+   - 重複署名削除（authorフィールドに統一）
+   - マークダウン記法修正
+
 ## 今後の拡張予定
 
 ### 機能追加
@@ -279,7 +329,10 @@ npm run preview      # プレビューサーバー
 2. Google Analytics導入
 3. サイトマップ生成
 4. 商品詳細ページ
-5. ブログ機能
+5. RSS配信機能
+6. コメント機能（GitHub Issues連携等）
+7. タグページ作成
+8. 検索機能強化
 
 ### さらなる最適化
 - WebP画像形式への変換
@@ -313,9 +366,52 @@ npm run preview      # プレビューサーバー
 - 専門性は技術内容で示し、経験年数には依存しない
 - 多様な働き方と価値観を尊重した表現を心がける
 
+## Content Collections設定
+
+### スキーマ定義
+```typescript
+// src/content/config.ts
+const newsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.date(),
+    category: z.enum(['news', 'blog', 'project', 'event', 'update']),
+    tags: z.array(z.string()).optional(),
+    author: z.enum(['草間 恵', 'Wells合同会社']).default('Wells合同会社'),
+    featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
+  }),
+});
+```
+
+### 記事作成ガイドライン
+- **ファイル名**: `YYYY-MM-DD-slug.md`
+- **カテゴリ使い分け**:
+  - `news`: 公式発表・サービス開始
+  - `blog`: 個人的なコラム・考察
+  - `project`: プロジェクト報告・事例
+  - `event`: イベント・ワークショップ
+  - `update`: サービス更新・機能追加
+- **著者使い分け**:
+  - `草間 恵`: 個人的なコラム・体験談
+  - `Wells合同会社`: 公式発表・サービス情報
+
+### TODOコメント
+記事にはHTMLコメント形式で肉付けガイダンスを追加：
+```html
+<!-- [TODO] 具体例を追加すると説得力が増します
+例：
+- 実際の事例や体験談
+- 数値データや具体的な成果
+- 読者へのアクションの提案
+-->
+```
+
 ---
 
-**最終更新**: 2025年7月13日  
-**バージョン**: v2.2.0  
-**主要機能**: 総合的な品質向上（SEO・アクセシビリティ・デザイン統一）  
-**最新コミット**: 3b3c53e
+**最終更新**: 2025年7月14日  
+**バージョン**: v2.3.0  
+**主要機能**: ニュース・ブログ機能追加（Content Collections、マークダウン処理）  
+**最新コミット**: 5409edf
