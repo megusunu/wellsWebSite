@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { getBaseUrl } from '../utils/paths';
+import { getBaseUrl, joinPath } from '../utils/paths';
 
 const baseUrl = getBaseUrl();
 
@@ -73,7 +73,7 @@ const getCategoryLabel = (category: string) => {
                 
                 <div class="flex-1">
                   <h3 class="font-bold text-natural-brown">
-                    <a href={`${baseUrl}news/${entry.slug}/`} class="hover:text-vibrant-orange transition-colors">
+                    <a href={joinPath(baseUrl, 'news', entry.slug)} class="hover:text-vibrant-orange transition-colors">
                       {entry.data.title}
                     </a>
                   </h3>
@@ -98,7 +98,7 @@ const getCategoryLabel = (category: string) => {
       <!-- 「すべて見る」ボタン -->
       <div class="text-center">
         <a 
-          href={`${baseUrl}news/`} 
+          href={joinPath(baseUrl, 'news')} 
           class="inline-block bg-natural-green text-white px-8 py-3 rounded-full hover:bg-vibrant-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all"
         >
           すべてのお知らせを見る

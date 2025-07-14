@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { marked } from 'marked';
-import { getBaseUrl, getAssetPath } from '../../utils/paths';
+import { getBaseUrl, getAssetPath, joinPath } from '../../utils/paths';
 
 const baseUrl = getBaseUrl();
 
@@ -72,7 +72,7 @@ const relatedNews = allNews
         <ol class="flex items-center space-x-2 text-sm">
           <li><a href={baseUrl} class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
           <li class="text-gray-400">/</li>
-          <li><a href={`${baseUrl}news/`} class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
+          <li><a href={joinPath(baseUrl, 'news')} class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
           <li class="text-gray-400">/</li>
           <li class="text-gray-600">{entry.data.title}</li>
         </ol>
@@ -97,7 +97,7 @@ const relatedNews = allNews
             </time>
             {entry.data.featured && (
               <a 
-                href={`${baseUrl}news/featured/`}
+                href={joinPath(baseUrl, 'news', 'featured')}
                 class="inline-flex items-center px-3 py-1 rounded text-sm font-medium text-vibrant-orange bg-vibrant-orange/10 hover:bg-vibrant-orange/20 transition-colors"
               >
                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -123,7 +123,7 @@ const relatedNews = allNews
             <div class="flex flex-wrap gap-2">
               {entry.data.tags.map((tag) => (
                 <a 
-                  href={`${baseUrl}news/tags/${tag}/`}
+                  href={joinPath(baseUrl, 'news', 'tags', tag)}
                   class="bg-white/80 text-natural-brown px-3 py-1 rounded-full text-sm border border-natural-beige hover:bg-natural-green/10 hover:border-natural-green transition-colors"
                 >
                   #{tag}
@@ -186,7 +186,7 @@ const relatedNews = allNews
 
           <!-- ナビゲーション -->
           <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
-            <a href={`${baseUrl}news/`} 
+            <a href={joinPath(baseUrl, 'news')} 
                class="inline-flex items-center text-natural-green hover:text-vibrant-orange transition-colors font-medium">
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -218,7 +218,7 @@ const relatedNews = allNews
                     {getCategoryLabel(relatedEntry.data.category)}
                   </span>
                   <h3 class="font-bold text-natural-brown mb-2 line-clamp-2">
-                    <a href={`/news/${relatedEntry.slug}/`} class="hover:text-vibrant-orange transition-colors">
+                    <a href={joinPath(baseUrl, 'news', relatedEntry.slug)} class="hover:text-vibrant-orange transition-colors">
                       {relatedEntry.data.title}
                     </a>
                   </h3>
