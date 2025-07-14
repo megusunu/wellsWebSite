@@ -6,6 +6,8 @@ export interface Props {
   description?: string;
 }
 
+import { getAssetPath } from '../utils/paths';
+
 const { title, description = 'Wells合同会社 - システム開発とハンドメイド小物販売' } = Astro.props;
 ---
 
@@ -15,8 +17,8 @@ const { title, description = 'Wells合同会社 - システム開発とハンド
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/images/logo/1x/logomark.png" />
-    <link rel="apple-touch-icon" href="/images/logo/1x/logomark.png" />
+    <link rel="icon" type="image/png" href={getAssetPath('/images/logo/1x/logomark.png')} />
+    <link rel="apple-touch-icon" href={getAssetPath('/images/logo/1x/logomark.png')} />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Wells合同会社</title>
     

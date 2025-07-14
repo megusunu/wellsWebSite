@@ -4,8 +4,9 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { marked } from 'marked';
+import { getBaseUrl, getAssetPath } from '../../utils/paths';
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = getBaseUrl();
 
 export async function getStaticPaths() {
   const newsEntries = await getCollection('news', ({ data }) => {
@@ -69,9 +70,9 @@ const relatedNews = allNews
     <nav class="py-4 bg-natural-beige/20" aria-label="パンくずナビゲーション">
       <div class="section-padding">
         <ol class="flex items-center space-x-2 text-sm">
-          <li><a href="/" class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
+          <li><a href={baseUrl} class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
           <li class="text-gray-400">/</li>
-          <li><a href="/news/" class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
+          <li><a href={`${baseUrl}news/`} class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
           <li class="text-gray-400">/</li>
           <li class="text-gray-600">{entry.data.title}</li>
         </ol>
@@ -96,7 +97,7 @@ const relatedNews = allNews
             </time>
             {entry.data.featured && (
               <a 
-                href="/news/featured/"
+                href={`${baseUrl}news/featured/`}
                 class="inline-flex items-center px-3 py-1 rounded text-sm font-medium text-vibrant-orange bg-vibrant-orange/10 hover:bg-vibrant-orange/20 transition-colors"
               >
                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -122,7 +123,7 @@ const relatedNews = allNews
             <div class="flex flex-wrap gap-2">
               {entry.data.tags.map((tag) => (
                 <a 
-                  href={`/news/tags/${tag}/`}
+                  href={`${baseUrl}news/tags/${tag}/`}
                   class="bg-white/80 text-natural-brown px-3 py-1 rounded-full text-sm border border-natural-beige hover:bg-natural-green/10 hover:border-natural-green transition-colors"
                 >
                   #{tag}
@@ -154,7 +155,7 @@ const relatedNews = allNews
               <div class="flex items-center">
                 <div class="w-16 h-16 rounded-full overflow-hidden mr-4 border-4 border-natural-green/20">
                   <img 
-                    src={`${baseUrl}images/profile.jpg`} 
+                    src={getAssetPath('/images/profile.jpg')} 
                     alt="草間恵のプロフィール写真"
                     class="w-full h-full object-cover"
                   />
@@ -169,7 +170,7 @@ const relatedNews = allNews
               <div class="flex items-center">
                 <div class="w-16 h-16 rounded-full overflow-hidden mr-4 border-4 border-natural-green/20 bg-natural-beige/30 flex items-center justify-center">
                   <img 
-                    src={`${baseUrl}images/logo/1x/logomark.png`} 
+                    src={getAssetPath('/images/logo/1x/logomark.png')} 
                     alt="Wells合同会社ロゴ"
                     class="w-10 h-10 object-contain"
                   />
@@ -185,7 +186,7 @@ const relatedNews = allNews
 
           <!-- ナビゲーション -->
           <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
-            <a href="/news/" 
+            <a href={`${baseUrl}news/`} 
                class="inline-flex items-center text-natural-green hover:text-vibrant-orange transition-colors font-medium">
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -193,7 +194,7 @@ const relatedNews = allNews
               一覧に戻る
             </a>
             
-            <a href="/#contact" 
+            <a href={`${baseUrl}#contact`} 
                class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-vibrant-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
               お問い合わせ
             </a>

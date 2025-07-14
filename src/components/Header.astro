@@ -1,8 +1,10 @@
 ---
-const baseUrl = import.meta.env.BASE_URL;
+import { getBaseUrl, getAssetPath } from '../utils/paths';
+
+const baseUrl = getBaseUrl();
 
 const navItems = [
-  { href: `${baseUrl}`, label: 'ホーム' },
+  { href: baseUrl, label: 'ホーム' },
   { href: `${baseUrl}#services`, label: 'システム開発' },
   { href: `${baseUrl}#handmade`, label: 'ハンドメイド' },
   { href: `${baseUrl}about-ceo`, label: '代表について' },
@@ -15,12 +17,12 @@ const navItems = [
 <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
   <nav class="section-padding py-4">
     <div class="flex justify-between items-center">
-      <a href={`${baseUrl}`} class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+      <a href={baseUrl} class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
         <img 
-          src={`${baseUrl}images/logo/1x/wellslogo.png`} 
+          src={getAssetPath('/images/logo/1x/wellslogo.png')} 
           alt="Wells合同会社" 
           class="h-8 md:h-10 w-auto"
-          srcset={`${baseUrl}images/logo/1x/wellslogo.png 1x, ${baseUrl}images/logo/2x/wellslogo@2x.png 2x, ${baseUrl}images/logo/4x/wellslogo@4x.png 4x`}
+          srcset={`${getAssetPath('/images/logo/1x/wellslogo.png')} 1x, ${getAssetPath('/images/logo/2x/wellslogo@2x.png')} 2x, ${getAssetPath('/images/logo/4x/wellslogo@4x.png')} 4x`}
         />
       </a>
       

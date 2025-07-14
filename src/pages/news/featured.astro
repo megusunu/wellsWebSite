@@ -4,6 +4,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 // featured: true の記事のみを取得
 const featuredEntries = await getCollection('news', ({ data }) => {
   return data.draft !== true && data.featured === true;
@@ -46,9 +48,9 @@ const sortedEntries = featuredEntries.sort((a, b) =>
     <nav class="py-4 bg-natural-beige/20" aria-label="パンくずナビゲーション">
       <div class="section-padding">
         <ol class="flex items-center space-x-2 text-sm">
-          <li><a href="/" class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
+          <li><a href={`${baseUrl}`} class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
           <li class="text-gray-400">/</li>
-          <li><a href="/news/" class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
+          <li><a href={`${baseUrl}news/`} class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
           <li class="text-gray-400">/</li>
           <li class="text-gray-600">注目記事</li>
         </ol>
@@ -103,7 +105,7 @@ const sortedEntries = featuredEntries.sort((a, b) =>
                   </div>
                   
                   <h2 class="text-xl font-bold text-natural-brown mb-3 line-clamp-2">
-                    <a href={`/news/${entry.slug}/`} class="hover:text-vibrant-orange transition-colors">
+                    <a href={`${baseUrl}news/${entry.slug}/`} class="hover:text-vibrant-orange transition-colors">
                       {entry.data.title}
                     </a>
                   </h2>
@@ -116,7 +118,7 @@ const sortedEntries = featuredEntries.sort((a, b) =>
                     <div class="flex flex-wrap gap-2 mb-4">
                       {entry.data.tags.map((tag) => (
                         <a 
-                          href={`/news/tags/${tag}/`}
+                          href={`${baseUrl}news/tags/${tag}/`}
                           class="bg-white/80 text-natural-brown px-2 py-1 rounded-full text-sm border border-natural-beige hover:bg-natural-green/10 hover:border-natural-green transition-colors"
                         >
                           #{tag}
@@ -130,7 +132,7 @@ const sortedEntries = featuredEntries.sort((a, b) =>
                       by {entry.data.author}
                     </span>
                     <a 
-                      href={`/news/${entry.slug}/`}
+                      href={`${baseUrl}news/${entry.slug}/`}
                       class="inline-flex items-center text-vibrant-orange hover:text-natural-green transition-colors font-medium text-sm"
                     >
                       続きを読む 
@@ -149,7 +151,7 @@ const sortedEntries = featuredEntries.sort((a, b) =>
               </svg>
               <p class="text-gray-500 text-lg mb-8">現在、注目記事はありません。</p>
               <a 
-                href="/news/"
+                href={`${baseUrl}news/`}
                 class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-vibrant-orange transition-colors font-medium"
               >
                 すべての記事を見る
@@ -169,19 +171,19 @@ const sortedEntries = featuredEntries.sort((a, b) =>
           </h2>
           <div class="flex flex-wrap justify-center gap-4">
             <a 
-              href="/news/"
+              href={`${baseUrl}news/`}
               class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-vibrant-orange transition-colors font-medium"
             >
               すべての記事
             </a>
             <a 
-              href="/news/?category=blog"
+              href={`${baseUrl}news/?category=blog`}
               class="inline-block bg-white text-natural-green px-6 py-3 rounded-full hover:bg-natural-green hover:text-white transition-colors font-medium border border-natural-green"
             >
               コラム記事
             </a>
             <a 
-              href="/#contact"
+              href={`${baseUrl}#contact`}
               class="inline-block bg-white text-natural-green px-6 py-3 rounded-full hover:bg-natural-green hover:text-white transition-colors font-medium border border-natural-green"
             >
               お問い合わせ

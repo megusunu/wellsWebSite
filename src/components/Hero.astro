@@ -1,5 +1,7 @@
 ---
-const baseUrl = import.meta.env.BASE_URL;
+import { getBaseUrl, getAssetPath } from '../utils/paths';
+
+const baseUrl = getBaseUrl();
 ---
 
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -17,10 +19,10 @@ const baseUrl = import.meta.env.BASE_URL;
     <!-- Logo -->
     <div class="mb-8 flex justify-center fade-in">
       <img 
-        src={`${baseUrl}images/logo/1x/logomark_white.png`} 
+        src={getAssetPath('/images/logo/1x/logomark_white.png')} 
         alt="Wells合同会社ロゴ" 
         class="h-16 md:h-20 w-auto drop-shadow-2xl"
-        srcset={`${baseUrl}images/logo/1x/logomark_white.png 1x, ${baseUrl}images/logo/2x/logomark_white@2x.png 2x, ${baseUrl}images/logo/4x/logomark_white@4x.png 4x`}
+        srcset={`${getAssetPath('/images/logo/1x/logomark_white.png')} 1x, ${getAssetPath('/images/logo/2x/logomark_white@2x.png')} 2x, ${getAssetPath('/images/logo/4x/logomark_white@4x.png')} 4x`}
       />
     </div>
     
@@ -70,7 +72,7 @@ const baseUrl = import.meta.env.BASE_URL;
          class="bg-vibrant-orange text-white px-8 py-4 rounded-full hover:bg-light-orange transition-all font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 border-2 border-transparent hover:border-white/30">
         ハンドメイド作品
       </a>
-      <a href="/about-ceo" 
+      <a href={`${baseUrl}about-ceo`} 
          class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/30 transition-all font-medium shadow-lg border-2 border-white/30 hover:border-white/50">
         代表について
       </a>

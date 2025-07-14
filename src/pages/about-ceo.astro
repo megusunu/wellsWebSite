@@ -2,8 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getAssetPath, getBaseUrl } from '../utils/paths';
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = getBaseUrl();
 ---
 
 <Layout title="代表社員について | Wells合同会社">
@@ -34,7 +35,7 @@ const baseUrl = import.meta.env.BASE_URL;
               <div class="bg-gradient-to-br from-natural-light-green/20 to-warm-yellow/20 rounded-2xl p-8 text-center">
                 <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-natural-green/20">
                   <img 
-                    src={`${baseUrl}images/profile.jpg`} 
+                    src={getAssetPath('/images/profile.jpg')} 
                     alt="草間恵のプロフィール写真" 
                     class="w-full h-full object-cover"
                   />
@@ -261,7 +262,7 @@ const baseUrl = import.meta.env.BASE_URL;
                     <div class="text-center">
                       <div class="w-20 h-20 rounded-full overflow-hidden mx-auto border-4 border-white shadow-lg">
                         <img 
-                          src={`${baseUrl}images/profile.jpg`} 
+                          src={getAssetPath('/images/profile.jpg')} 
                           alt="代表社員 草間恵のプロフィール写真" 
                           class="w-full h-full object-cover"
                         />
@@ -422,11 +423,11 @@ const baseUrl = import.meta.env.BASE_URL;
           技術の力で、手仕事の温かさで、一緒に身近なところから変化を起こしていきましょう。
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/#contact" 
+          <a href={`${baseUrl}#contact`} 
              class="bg-vibrant-orange text-white px-8 py-4 rounded-full hover:bg-light-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
             お問い合わせ
           </a>
-          <a href="/#services" 
+          <a href={`${baseUrl}#services`} 
              class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/30 transition-colors font-medium shadow-lg border-2 border-white/30 hover:border-white/50">
             サービスを見る
           </a>

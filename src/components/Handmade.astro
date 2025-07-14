@@ -1,7 +1,6 @@
 ---
 import ImageSlideshow from './ImageSlideshow.astro';
-
-const baseUrl = import.meta.env.BASE_URL;
+import { getAssetPath } from '../utils/paths';
 
 const products = [
   {
@@ -9,11 +8,11 @@ const products = [
     description: 'バンダナ、ケープ、マフラーなど愛犬・愛猫のためのあたたかいニット製品',
     features: ['クリスマス限定', 'うさ耳フード付き', '北欧柄'],
     images: [
-      `${baseUrl}images/products/pet-wear/155704fe7e4c90313e05ea1fac58425ac1f42503.jpeg`,
-      `${baseUrl}images/products/pet-wear/23f54aa2a25f72f4c00adec41af51af7e4cb8399.jpeg`,
-      `${baseUrl}images/products/pet-wear/4d78b2872834f09ff435d4fa46aecbd7205ba243.jpeg`,
-      `${baseUrl}images/products/pet-wear/55870ecd9589b5069b2ef0d1b4e8bbcabbb7b99c.jpeg`,
-      `${baseUrl}images/products/pet-wear/5ea166172971ee8c6b1f84893c939045279b42f6.jpeg`
+      getAssetPath('/images/products/pet-wear/155704fe7e4c90313e05ea1fac58425ac1f42503.jpeg'),
+      getAssetPath('/images/products/pet-wear/23f54aa2a25f72f4c00adec41af51af7e4cb8399.jpeg'),
+      getAssetPath('/images/products/pet-wear/4d78b2872834f09ff435d4fa46aecbd7205ba243.jpeg'),
+      getAssetPath('/images/products/pet-wear/55870ecd9589b5069b2ef0d1b4e8bbcabbb7b99c.jpeg'),
+      getAssetPath('/images/products/pet-wear/5ea166172971ee8c6b1f84893c939045279b42f6.jpeg')
     ]
   },
   {
@@ -21,10 +20,10 @@ const products = [
     description: 'リーフ柄、コスモス、螺旋編みなど様々なデザインの手首を温める小物',
     features: ['ウール・コットン素材', 'エメラルドグリーン', 'ターコイズ'],
     images: [
-      `${baseUrl}images/products/wrist-warmers/05c1ebd24ad37d3387394f3906e0a8c9ddb8e7d7.jpeg`,
-      `${baseUrl}images/products/wrist-warmers/3922ecae1386284ad174d4bd2992fdf6b9a44330.jpeg`,
-      `${baseUrl}images/products/wrist-warmers/41443df462d970c95fb36456ec29a56dc421e78a.jpeg`,
-      `${baseUrl}images/products/wrist-warmers/52c33f55d621e68606051098cabc08f79aeeedb9.jpeg`
+      getAssetPath('/images/products/wrist-warmers/05c1ebd24ad37d3387394f3906e0a8c9ddb8e7d7.jpeg'),
+      getAssetPath('/images/products/wrist-warmers/3922ecae1386284ad174d4bd2992fdf6b9a44330.jpeg'),
+      getAssetPath('/images/products/wrist-warmers/41443df462d970c95fb36456ec29a56dc421e78a.jpeg'),
+      getAssetPath('/images/products/wrist-warmers/52c33f55d621e68606051098cabc08f79aeeedb9.jpeg')
     ]
   },
   {
@@ -32,10 +31,10 @@ const products = [
     description: 'チューリップ、カーネーション、かぼちゃのおもちゃ、クリスマス靴下など',
     features: ['季節限定', 'インテリア', 'ペット用おもちゃ'],
     images: [
-      `${baseUrl}images/products/tulips/6576044701e8389906928293d85b22e7cad71b71.jpeg`,
-      `${baseUrl}images/products/tulips/77552593e30842b9023daa514c9697c7a720c002.jpeg`,
-      `${baseUrl}images/products/tulips/8449fcdd85c3662ad8e1d93f894681d5f15194d9.jpeg`,
-      `${baseUrl}images/products/tulips/4a2039495e08da451d3b455e729cbcd93dd70aab.jpeg`
+      getAssetPath('/images/products/tulips/6576044701e8389906928293d85b22e7cad71b71.jpeg'),
+      getAssetPath('/images/products/tulips/77552593e30842b9023daa514c9697c7a720c002.jpeg'),
+      getAssetPath('/images/products/tulips/8449fcdd85c3662ad8e1d93f894681d5f15194d9.jpeg'),
+      getAssetPath('/images/products/tulips/4a2039495e08da451d3b455e729cbcd93dd70aab.jpeg')
     ]
   }
 ];
