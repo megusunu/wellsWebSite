@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CompanyOverview from '../components/CompanyOverview.astro';
+---
+
+<Layout title="会社概要 | Wells合同会社" description="Wells合同会社の基本情報、事業内容、設立背景をご紹介します。">
+  <Header />
+  <main class="pt-20">
+    <!-- パンくずナビ -->
+    <nav class="py-4 bg-natural-beige/20" aria-label="パンくずナビゲーション">
+      <div class="section-padding">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li><a href="/" class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
+          <li class="text-gray-400">/</li>
+          <li class="text-gray-600">会社概要</li>
+        </ol>
+      </div>
+    </nav>
+
+
+    <!-- 会社概要コンテンツ -->
+    <CompanyOverview />
+
+  </main>
+  <Footer />
+</Layout>
