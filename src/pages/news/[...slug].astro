@@ -1,0 +1,411 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const newsEntries = await getCollection('news', ({ data }) => {
+    return data.draft !== true;
+  });
+  
+  return newsEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+type Props = {
+  entry: CollectionEntry<'news'>;
+};
+
+const { entry }: Props = Astro.props;
+const { Content } = await render(entry);
+
+// カテゴリ別の色定義
+const getCategoryColor = (category: string) => {
+  const colors = {
+    news: 'natural-green',
+    blog: 'vibrant-orange', 
+    project: 'natural-brown',
+    event: 'warm-yellow',
+    update: 'natural-light-green'
+  };
+  return colors[category as keyof typeof colors] || 'natural-green';
+};
+
+// カテゴリ別の日本語表示
+const getCategoryLabel = (category: string) => {
+  const labels = {
+    news: 'ニュース',
+    blog: 'コラム',
+    project: 'プロジェクト',
+    event: 'イベント',
+    update: 'アップデート'
+  };
+  return labels[category as keyof typeof labels] || category;
+};
+
+// 関連記事の取得（同じカテゴリから最大3件）
+const allNews = await getCollection('news', ({ data }) => {
+  return data.draft !== true;
+});
+
+const relatedNews = allNews
+  .filter(item => item.slug !== entry.slug && item.data.category === entry.data.category)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+---
+
+<Layout title={entry.data.title} description={entry.data.description}>
+  <Header />
+  <main class="pt-20">
+    <!-- パンくずナビ -->
+    <nav class="py-4 bg-natural-beige/20" aria-label="パンくずナビゲーション">
+      <div class="section-padding">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li><a href="/" class="text-natural-green hover:text-vibrant-orange transition-colors">ホーム</a></li>
+          <li class="text-gray-400">/</li>
+          <li><a href="/news/" class="text-natural-green hover:text-vibrant-orange transition-colors">お知らせ・更新情報</a></li>
+          <li class="text-gray-400">/</li>
+          <li class="text-gray-600">{entry.data.title}</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- 記事ヘッダー -->
+    <header class="py-12 bg-gradient-to-b from-natural-beige/30 to-white">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto">
+          <!-- カテゴリと日付 -->
+          <div class="flex flex-wrap items-center gap-4 mb-6">
+            <span class={`inline-block px-4 py-2 rounded-full text-sm font-medium text-white bg-${getCategoryColor(entry.data.category)}`}>
+              {getCategoryLabel(entry.data.category)}
+            </span>
+            <time class="text-gray-600" datetime={entry.data.date.toISOString()}>
+              {entry.data.date.toLocaleDateString('ja-JP', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+            {entry.data.featured && (
+              <span class="inline-block px-3 py-1 rounded text-sm font-medium text-vibrant-orange bg-vibrant-orange/10">
+                注目記事
+              </span>
+            )}
+          </div>
+
+          <!-- タイトル -->
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-sans font-black text-natural-brown mb-6 leading-tight">
+            {entry.data.title}
+          </h1>
+
+          <!-- 説明 -->
+          <p class="text-xl text-gray-700 leading-relaxed mb-6">
+            {entry.data.description}
+          </p>
+
+          <!-- タグ -->
+          {entry.data.tags && entry.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {entry.data.tags.map((tag) => (
+                <span class="bg-white/80 text-natural-brown px-3 py-1 rounded-full text-sm border border-natural-beige">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <!-- 記事本文 -->
+    <article class="py-16 bg-white">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto">
+          <div class="markdown-content max-w-none">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 記事フッター -->
+    <footer class="py-8 bg-natural-beige/20">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto">
+          <!-- 著者情報 -->
+          <div class="bg-white rounded-xl p-6 shadow-sm mb-8">
+            {entry.data.author === '草間 恵' ? (
+              <div class="flex items-center">
+                <div class="w-16 h-16 rounded-full overflow-hidden mr-4 border-4 border-natural-green/20">
+                  <img 
+                    src="/images/profile.jpg" 
+                    alt="草間恵のプロフィール写真"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 class="font-bold text-natural-brown text-lg">{entry.data.author}</h3>
+                  <p class="text-gray-600 text-sm">Wells合同会社 代表社員</p>
+                  <p class="text-gray-700 text-sm mt-1">技術とハンドメイドの両面から、身近な課題解決に取り組んでいます。</p>
+                </div>
+              </div>
+            ) : (
+              <div class="flex items-center">
+                <div class="w-16 h-16 rounded-full overflow-hidden mr-4 border-4 border-natural-green/20 bg-natural-beige/30 flex items-center justify-center">
+                  <img 
+                    src="/images/logo/1x/logomark.png" 
+                    alt="Wells合同会社ロゴ"
+                    class="w-10 h-10 object-contain"
+                  />
+                </div>
+                <div>
+                  <h3 class="font-bold text-natural-brown text-lg">{entry.data.author}</h3>
+                  <p class="text-gray-600 text-sm">システム開発とハンドメイドの会社</p>
+                  <p class="text-gray-700 text-sm mt-1">「半径3メートルを変えられないと世界は変わらない」を理念に活動しています。</p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- ナビゲーション -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+            <a href="/news/" 
+               class="inline-flex items-center text-natural-green hover:text-vibrant-orange transition-colors font-medium">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              一覧に戻る
+            </a>
+            
+            <a href="/#contact" 
+               class="inline-block bg-natural-green text-white px-6 py-3 rounded-full hover:bg-vibrant-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
+              お問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 関連記事 -->
+    {relatedNews.length > 0 && (
+      <section class="py-16 bg-white">
+        <div class="section-padding">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-natural-brown mb-8 text-center">
+              関連記事
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+              {relatedNews.map((relatedEntry) => (
+                <article class="bg-natural-beige/20 rounded-xl p-4 hover:shadow-lg transition-shadow">
+                  <span class={`inline-block px-2 py-1 rounded text-xs font-medium text-white bg-${getCategoryColor(relatedEntry.data.category)} mb-3`}>
+                    {getCategoryLabel(relatedEntry.data.category)}
+                  </span>
+                  <h3 class="font-bold text-natural-brown mb-2 line-clamp-2">
+                    <a href={`/news/${relatedEntry.slug}/`} class="hover:text-vibrant-orange transition-colors">
+                      {relatedEntry.data.title}
+                    </a>
+                  </h3>
+                  <time class="text-sm text-gray-500">
+                    {relatedEntry.data.date.toLocaleDateString('ja-JP')}
+                  </time>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* マークダウンコンテンツのスタイリング - 読みやすさを重視 */
+  .markdown-content {
+    color: #4b5563;
+    line-height: 1.8;
+    font-size: 1.125rem;
+  }
+  
+  .markdown-content h1, 
+  .markdown-content h2, 
+  .markdown-content h3, 
+  .markdown-content h4, 
+  .markdown-content h5, 
+  .markdown-content h6 {
+    color: #8D6E63 !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
+  }
+  
+  .markdown-content h1 {
+    font-size: 2.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1.5rem !important;
+    border-bottom: 3px solid #7CB342 !important;
+    padding-bottom: 0.75rem !important;
+  }
+  
+  .markdown-content h2 {
+    border-bottom: 2px solid #7CB342 !important;
+    padding-bottom: 0.75rem !important;
+    margin-top: 3rem !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1.75rem !important;
+  }
+  
+  .markdown-content h2:first-child {
+    margin-top: 0;
+  }
+  
+  .markdown-content h3 {
+    color: #7CB342 !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.5rem !important;
+  }
+  
+  .markdown-content h3:first-child {
+    margin-top: 0 !important;
+  }
+  
+  .markdown-content h4 {
+    margin-top: 2rem !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 1.25rem !important;
+  }
+  
+  .markdown-content h4:first-child {
+    margin-top: 0 !important;
+  }
+  
+  .markdown-content p {
+    margin-top: 0 !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.8 !important;
+  }
+  
+  .markdown-content a {
+    color: #7CB342;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(124, 179, 66, 0.3);
+    transition: all 0.2s ease;
+  }
+  
+  .markdown-content a:hover {
+    color: #FF7043;
+    border-bottom-color: #FF7043;
+  }
+  
+  .markdown-content blockquote {
+    border-left: 4px solid #FF7043 !important;
+    background: rgba(245, 230, 211, 0.2) !important;
+    padding: 1.5rem !important;
+    margin: 2rem 0 !important;
+    font-style: italic !important;
+    line-height: 1.7 !important;
+  }
+  
+  .markdown-content ul, 
+  .markdown-content ol {
+    margin: 1.5rem 0 !important;
+    padding-left: 1.5rem !important;
+  }
+  
+  .markdown-content ul {
+    list-style-type: disc !important;
+  }
+  
+  .markdown-content ol {
+    list-style-type: decimal !important;
+  }
+  
+  .markdown-content ul ul {
+    list-style-type: circle;
+    margin: 0.5rem 0;
+  }
+  
+  .markdown-content ol ol {
+    list-style-type: lower-alpha;
+    margin: 0.5rem 0;
+  }
+  
+  .markdown-content li {
+    margin: 0.75rem 0;
+    line-height: 1.7;
+  }
+  
+  .markdown-content li p {
+    margin: 0.5rem 0;
+  }
+  
+  .markdown-content strong {
+    color: #8D6E63;
+    font-weight: 600;
+  }
+  
+  .markdown-content code {
+    background: rgba(245, 230, 211, 0.5);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.9em;
+    color: #8D6E63;
+    border: 1px solid #F5E6D3;
+    font-family: 'Courier New', monospace;
+  }
+  
+  .markdown-content pre {
+    background: #f3f4f6 !important;
+    padding: 1.5rem !important;
+    border-radius: 0.75rem !important;
+    overflow-x: auto !important;
+    margin: 2rem 0 !important;
+    line-height: 1.6 !important;
+    font-family: 'Courier New', monospace !important;
+  }
+  
+  .markdown-content pre code {
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    font-size: 0.875rem !important;
+    color: #333 !important;
+  }
+  
+  .markdown-content hr {
+    border: none;
+    border-top: 2px solid #F5E6D3;
+    margin: 3rem 0;
+  }
+  
+  .markdown-content table {
+    margin: 2rem 0;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .markdown-content th, 
+  .markdown-content td {
+    border: 1px solid #F5E6D3;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .markdown-content th {
+    background: rgba(245, 230, 211, 0.3);
+    font-weight: 600;
+    color: #8D6E63;
+  }
+
+  /* 行数制限 */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+// ニュース記事を取得して日付順にソート
+const newsEntries = await getCollection('news', ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedNews = newsEntries.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// カテゴリ別の色定義
+const getCategoryColor = (category: string) => {
+  const colors = {
+    news: 'natural-green',
+    blog: 'vibrant-orange', 
+    project: 'natural-brown',
+    event: 'warm-yellow',
+    update: 'natural-light-green'
+  };
+  return colors[category as keyof typeof colors] || 'natural-green';
+};
+
+// カテゴリ別の日本語表示
+const getCategoryLabel = (category: string) => {
+  const labels = {
+    news: 'ニュース',
+    blog: 'コラム',
+    project: 'プロジェクト',
+    event: 'イベント',
+    update: 'アップデート'
+  };
+  return labels[category as keyof typeof labels] || category;
+};
+---
+
+<Layout title="お知らせ・更新情報" description="Wells合同会社の最新ニュース、技術情報、ハンドメイド制作情報をお届けします。">
+  <Header />
+  <main class="pt-20">
+    <!-- ヒーローセクション -->
+    <section class="py-20 bg-gradient-to-b from-natural-beige/30 to-white">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-sans font-black text-natural-brown mb-6">
+            お知らせ・更新情報
+          </h1>
+          <p class="text-xl text-gray-700 leading-relaxed">
+            Wells合同会社の最新情報をお届けします。<br class="hidden md:block" />
+            技術・ハンドメイド・事業に関する様々な情報を発信してまいります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ニュース一覧 -->
+    <section class="py-20 bg-white">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto">
+          {sortedNews.length === 0 ? (
+            <div class="text-center py-20">
+              <p class="text-gray-600">まだ記事がありません。</p>
+            </div>
+          ) : (
+            <div class="space-y-8">
+              {sortedNews.map((entry) => (
+                <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-vibrant-orange hover:shadow-lg transition-shadow">
+                  <!-- カテゴリとメタ情報 -->
+                  <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <span class={`inline-block px-3 py-1 rounded-full text-sm font-medium text-white bg-${getCategoryColor(entry.data.category)}`}>
+                      {getCategoryLabel(entry.data.category)}
+                    </span>
+                    <time class="text-sm text-gray-500" datetime={entry.data.date.toISOString()}>
+                      {entry.data.date.toLocaleDateString('ja-JP', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                    {entry.data.featured && (
+                      <span class="inline-block px-2 py-1 rounded text-xs font-medium text-vibrant-orange bg-vibrant-orange/10">
+                        注目
+                      </span>
+                    )}
+                  </div>
+
+                  <!-- タイトルと説明 -->
+                  <h2 class="text-xl md:text-2xl font-bold text-natural-brown mb-3">
+                    <a href={`/news/${entry.slug}/`} class="hover:text-vibrant-orange transition-colors">
+                      {entry.data.title}
+                    </a>
+                  </h2>
+                  
+                  <p class="text-gray-700 mb-4 leading-relaxed">
+                    {entry.data.description}
+                  </p>
+
+                  <!-- タグ -->
+                  {entry.data.tags && entry.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {entry.data.tags.map((tag) => (
+                        <span class="bg-natural-beige/50 text-natural-brown px-3 py-1 rounded-full text-sm">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <!-- 読むリンク -->
+                  <div class="text-right">
+                    <a 
+                      href={`/news/${entry.slug}/`}
+                      class="inline-flex items-center text-natural-green hover:text-vibrant-orange transition-colors font-medium"
+                    >
+                      続きを読む
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA セクション -->
+    <section class="py-20 bg-gradient-to-b from-natural-beige/10 to-white">
+      <div class="section-padding text-center">
+        <h2 class="text-3xl font-sans font-bold text-natural-brown mb-6">
+          最新情報をお見逃しなく
+        </h2>
+        <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Wells合同会社の技術・ハンドメイド・事業に関する情報を定期的に更新しています。<br>
+          ご質問やご相談がございましたら、お気軽にお問い合わせください。
+        </p>
+        <a href="/#contact" 
+           class="inline-block bg-natural-green text-white px-8 py-4 rounded-full hover:bg-vibrant-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
+          お問い合わせ
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  article {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  article:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  article:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  article:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+</style>

@@ -5,7 +5,9 @@
       "Bash(mkdir:*)",
       "Bash(ls:*)",
       "WebFetch(domain:minne.com)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": []
   }
