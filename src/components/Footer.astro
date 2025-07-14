@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <footer class="bg-natural-brown text-white py-12">
@@ -8,10 +9,10 @@ const currentYear = new Date().getFullYear();
       <div>
         <div class="flex items-center space-x-3 mb-4">
           <img 
-            src="/images/logo/1x/wellslogo_white.png" 
+            src={`${baseUrl}images/logo/1x/wellslogo_white.png`} 
             alt="Wells合同会社" 
             class="h-8 w-auto"
-            srcset="/images/logo/1x/wellslogo_white.png 1x, /images/logo/2x/wellslogo_white@2x.png 2x, /images/logo/4x/wellslogo_white@4x.png 4x"
+            srcset={`${baseUrl}images/logo/1x/wellslogo_white.png 1x, ${baseUrl}images/logo/2x/wellslogo_white@2x.png 2x, ${baseUrl}images/logo/4x/wellslogo_white@4x.png 4x`}
           />
         </div>
         <p class="text-natural-beige/80 leading-relaxed">
@@ -24,37 +25,37 @@ const currentYear = new Date().getFullYear();
         <h4 class="font-sans font-bold mb-4">サイトナビ</h4>
         <ul class="space-y-2 text-natural-beige/80">
           <li>
-            <a href="/" class="hover:text-white transition-colors">
+            <a href={`${baseUrl}`} class="hover:text-white transition-colors">
               ホーム
             </a>
           </li>
           <li>
-            <a href="/#services" class="hover:text-white transition-colors">
+            <a href={`${baseUrl}#services`} class="hover:text-white transition-colors">
               システム開発
             </a>
           </li>
           <li>
-            <a href="/#handmade" class="hover:text-white transition-colors">
+            <a href={`${baseUrl}#handmade`} class="hover:text-white transition-colors">
               ハンドメイド
             </a>
           </li>
           <li>
-            <a href="/about-ceo" class="hover:text-white transition-colors">
+            <a href={`${baseUrl}about-ceo`} class="hover:text-white transition-colors">
               代表について
             </a>
           </li>
           <li>
-            <a href="/news" class="hover:text-white transition-colors">
+            <a href={`${baseUrl}news`} class="hover:text-white transition-colors">
               お知らせ
             </a>
           </li>
           <li>
-            <a href="/company" class="hover:text-white transition-colors">
+            <a href={`${baseUrl}company`} class="hover:text-white transition-colors">
               会社概要
             </a>
           </li>
           <li>
-            <a href="/#contact" class="hover:text-white transition-colors">
+            <a href={`${baseUrl}#contact`} class="hover:text-white transition-colors">
               お問い合わせ
             </a>
           </li>
