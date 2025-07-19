@@ -9,6 +9,9 @@ export interface Props {
 import { getAssetPath } from '../utils/paths';
 
 const { title, description = 'Wells合同会社 - システム開発とハンドメイド小物販売' } = Astro.props;
+
+// 環境変数から分析ツールの設定を取得
+const ga4MeasurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
 ---
 
 <!DOCTYPE html>
@@ -33,6 +36,19 @@ const { title, description = 'Wells合同会社 - システム開発とハンド
     <meta name="twitter:title" content={`${title} | Wells合同会社`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/images/logo/1x/wellslogo.png" />
+    
+    <!-- Google Analytics -->
+    {ga4MeasurementId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}></script>
+        <script define:vars={{ ga4MeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', ga4MeasurementId);
+        </script>
+      </>
+    )}
   </head>
   <body class="bg-white min-h-screen">
     <slot />

@@ -1,5 +1,5 @@
 ---
-import { getBaseUrl, getAssetPath } from '../utils/paths';
+import { getBaseUrl, getAssetPath, joinPath } from '../utils/paths';
 
 const currentYear = new Date().getFullYear();
 const baseUrl = getBaseUrl();
@@ -82,7 +82,12 @@ const baseUrl = getBaseUrl();
     </div>
     
     <div class="border-t border-natural-beige/20 pt-8 text-center text-natural-beige/60">
-      <p>&copy; {currentYear} Wells合同会社. All rights reserved.</p>
+      <p class="mb-2">&copy; {currentYear} Wells合同会社. All rights reserved.</p>
+      <p class="text-sm">
+        <a href={joinPath(baseUrl, 'privacy-policy')} class="hover:text-natural-beige transition-colors">
+          プライバシーポリシー
+        </a>
+      </p>
     </div>
   </div>
 </footer>

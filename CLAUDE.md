@@ -204,8 +204,9 @@ public/images/logo/
 
 ### Google Analytics 4
 - **測定ID**: 環境変数 `PUBLIC_GA4_MEASUREMENT_ID` で管理
-- **実装**: Layout.astroに組み込み
+- **実装**: Layout.astroに組み込み（全19ページに自動適用）
 - **GitHub Actions**: Secretsに設定して自動デプロイ時に適用
+- **確認方法**: ビルド後、全HTMLファイルにgtagスクリプトが含まれることを確認済み
 
 ### Google Search Console
 - **認証方法**: ドメイン認証（DNSレコード）
@@ -515,6 +516,12 @@ const newsCollection = defineCollection({
    - 御朱印帳風シール帳の記載削除
    - joinPath関数でURL結合問題を修正
    - お知らせページの壊れたリンクを全て修正
+   - Footer.astroのjoinPath関数インポート追加
+
+6. **Google Analytics動作確認**
+   - 全19ページ（index、about-ceo、privacy-policy、news関連15ページ、company）にGA4タグを確認
+   - 各ページに4つのgtag関連記述が含まれることを確認
+   - 正しいフォーマットで出力されることを確認
 
 ---
 
