@@ -193,6 +193,29 @@ public/images/logo/
 - **フッター**: 白いフルロゴ
 - **ファビコン**: ロゴマーク
 
+## デプロイ・分析設定
+
+### ホスティング
+- **本番環境**: https://wells.jp （GitHub Pages + カスタムドメイン）
+- **GitHub Pages設定**: 
+  - サイト: https://wells.jp
+  - ベースパス: /
+  - 自動デプロイ: mainブランチへのプッシュで自動実行
+
+### Google Analytics 4
+- **測定ID**: 環境変数 `PUBLIC_GA4_MEASUREMENT_ID` で管理
+- **実装**: Layout.astroに組み込み
+- **GitHub Actions**: Secretsに設定して自動デプロイ時に適用
+
+### Google Search Console
+- **認証方法**: ドメイン認証（DNSレコード）
+- **サイトマップ**: /sitemap-index.xml
+
+### プライバシーポリシー
+- **URL**: /privacy-policy
+- **内容**: GA4使用について明記
+- **リンク**: フッターに配置
+
 ## 実績・プロジェクト
 
 ### 最近の実績（新しい順）
@@ -269,10 +292,26 @@ npm run build        # 本番ビルド
 npm run preview      # プレビューサーバー
 ```
 
+### デプロイ
+```bash
+# 環境変数設定（.envファイル作成）
+cp .env.example .env
+# PUBLIC_GA4_MEASUREMENT_ID を設定
+
+# 手動ビルド&デプロイ
+npm run build
+# distフォルダの内容をアップロード
+
+# 自動デプロイ（GitHub Actions）
+# mainブランチにプッシュすると自動実行
+git push origin main
+```
+
 ### Git管理
 - **ブランチ**: main
 - **コミット**: 日本語で詳細に記述
 - **署名**: Claude Code生成の旨を記載
+- **リモート**: git@github.com:megusunu/wellsWebSite.git
 
 ## 技術的な課題と解決
 
@@ -365,12 +404,12 @@ npm run preview      # プレビューサーバー
 
 ### 機能追加
 1. お問い合わせフォームのバックエンド実装（Netlify Forms等）
-2. Google Analytics導入
+2. ~~Google Analytics導入~~ ✅ 完了（2025-01-19）
 3. サイトマップ生成
 4. 商品詳細ページ
 5. RSS配信機能
 6. コメント機能（GitHub Issues連携等）
-7. タグページ作成
+7. ~~タグページ作成~~ ✅ 完了（2025-01-15）
 8. 検索機能強化
 
 ### さらなる最適化
@@ -450,7 +489,36 @@ const newsCollection = defineCollection({
 
 ---
 
-**最終更新**: 2025年7月14日  
-**バージョン**: v2.4.0  
-**主要機能**: 職務経歴書ベースのサービス内容最適化（一人会社として現実的な規模感、具体的技術スタック強化）  
-**最新コミット**: 2a809dc
+### v2.5.0 - Google Analytics & デプロイ設定
+
+1. **Google Analytics 4 導入**
+   - 環境変数でGA4測定IDを管理
+   - Layout.astroにトラッキングコード実装
+   - プライバシーポリシーページ作成
+
+2. **デプロイ設定**
+   - GitHub Pages + カスタムドメイン（wells.jp）対応
+   - GitHub Actionsで自動デプロイ設定
+   - 環境変数をSecretsで管理
+
+3. **プライバシー対応**
+   - /privacy-policyページ作成
+   - Google Analytics使用について明記
+   - フッターにリンク追加
+
+4. **ドキュメント整備**
+   - ANALYTICS_SETUP.md: GA4とSearch Console設定ガイド
+   - DEPLOY_GUIDE.md: デプロイ手順書
+   - GITHUB_ACTIONS_SETUP.md: 自動デプロイ設定ガイド
+
+5. **その他の改善**
+   - 御朱印帳風シール帳の記載削除
+   - joinPath関数でURL結合問題を修正
+   - お知らせページの壊れたリンクを全て修正
+
+---
+
+**最終更新**: 2025年1月19日  
+**バージョン**: v2.5.0  
+**主要機能**: Google Analytics導入、GitHub Pagesデプロイ設定、プライバシーポリシー対応  
+**最新コミット**: 38c53c2
