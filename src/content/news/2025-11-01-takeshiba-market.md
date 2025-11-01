@@ -1,7 +1,7 @@
 ---
 title: "竹芝「Bamboo Grass Market」に出店しました"
-description: "2025年11月3日、アトレ竹芝で開催されたハンドメイドマーケットに出店しました。ペットと人をつなぐ手編み小物「megusunuLab」の魅力をお届けします。"
-date: 2025-11-03
+description: "2025年11月1日、アトレ竹芝で開催されたハンドメイドマーケットに出店しました。ペットと人をつなぐ手編み小物「megusunuLab」の魅力をお届けします。"
+date: 2025-11-01
 category: event
 tags: ["ハンドメイド", "イベント", "megusunuLab", "ペット用品", "手編み", "ニット"]
 author: "草間 恵"
@@ -11,7 +11,7 @@ draft: false
 
 ## ペットと人をつなぐ手編み小物
 
-2025年11月3日（土・祝）、アトレ竹芝で開催された「スポーツ・アートとつながるBamboo Grass Market」に、手編み小物ブランド「megusunuLab（メグスヌラボ）」として出店いたしました。
+2025年11月1日（土）、アトレ竹芝で開催された「スポーツ・アートとつながるBamboo Grass Market」に、手編み小物ブランド「megusunuLab（メグスヌラボ）」として出店いたしました。
 
 <div class="image-grid">
 
@@ -101,14 +101,14 @@ megusunuLabの人気商品のひとつが、ペット用と人用のスヌード
 ### オンライン販売
 イベントに行けなかった方も、オンラインで購入いただけます：
 
-- **Square オンラインショップ**: [https://megusunulab.square.site/](https://megusunulab.square.site/)
-- **Instagram DM**: [@megusunu](https://www.instagram.com/megusunu/) からオーダー受付中
+- **Square オンラインショップ**: [https://megusunulab.square.site/](https://megusunulab.square.site/) - 商品のご購入はこちら
+- **Instagram DM**: [@megusunu](https://www.instagram.com/megusunu/) - カスタムオーダー受付中
 
 ### SNSで最新情報を発信中
 - **Instagram**: [@megusunu](https://www.instagram.com/megusunu/)
 - **X (Twitter)**: [@megusunu](https://x.com/megusunu)
 
-制作過程や新商品の情報を随時発信しています。ぜひフォローしてください！
+イベント情報や制作過程、新商品の情報を随時発信しています。ぜひフォローしてください！
 
 ---
 
@@ -116,8 +116,7 @@ megusunuLabの人気商品のひとつが、ペット用と人用のスヌード
 
 ## お問い合わせ
 
-megusunuLabの商品やオーダーに関するお問い合わせは、以下までお願いいたします：
+商品のご購入は上記のオンラインショップへ、その他のお問い合わせは以下からお願いいたします：
 
-- **Instagram**: [@megusunu](https://www.instagram.com/megusunu/)
-- **X (Twitter)**: [@megusunu](https://x.com/megusunu)
-- **メール**: お問い合わせフォームよりご連絡ください
+- **メールフォーム**: [お問い合わせフォーム](/#contact)
+- **Instagram DM**: [@megusunu](https://www.instagram.com/megusunu/)
