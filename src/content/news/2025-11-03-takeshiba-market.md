@@ -46,11 +46,11 @@ MegusunuLabの人気商品のひとつが、ペット用と人用のスヌード
 
 <div class="image-grid">
 
-![人用スヌード着用イメージ](/images/events/takeshiba-market/snood-worn.png)
-
 ![人用スヌードのカラーバリエーション](/images/events/takeshiba-market/snood-human.jpg)
 
 ![ペット用スヌードのカラーバリエーション](/images/events/takeshiba-market/snood-pet.jpg)
+
+![人用スヌード着用イメージ](/images/events/takeshiba-market/snood-worn.png)
 
 </div>
 

@@ -13,7 +13,13 @@ draft: false
 
 心を込めて制作した手編み作品を中心に、以下の商品をご用意してお待ちしております：
 
+<div class="image-grid">
+
 ![根津神社手作り市の様子](/images/events/nedu-market/booth-2.jpg)
+
+![根津神社手作り市の様子](/images/events/nedu-market/booth-1.png)
+
+</div>
 
 ### 🧶 販売予定作品と価格
 
@@ -35,8 +41,6 @@ draft: false
 ### 📍 ブース場所
 **ブース番号：10番**
 西口の鳥居から入って左手のブロックでお待ちしております。
-
-![根津神社手作り市の様子](/images/events/nedu-market/booth-1.png)
 
 ### 🎨 カスタムオーダー承ります
 お好みの色や素材でのカスタムオーダーも承っております。詳しくは会場にて直接お問い合わせください。
