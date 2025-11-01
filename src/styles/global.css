@@ -223,12 +223,20 @@ a:focus {
 
 /* 画像のスタイリング */
 .markdown-content img {
-  max-width: 100% !important;
+  max-width: 600px !important;
+  width: 100% !important;
   height: auto !important;
   border-radius: 0.75rem !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   margin: 2rem auto !important;
   display: block !important;
+}
+
+/* モバイルでは画面幅いっぱいに */
+@media (max-width: 640px) {
+  .markdown-content img {
+    max-width: 100% !important;
+  }
 }
 
 /* 画像グリッドレイアウト */
