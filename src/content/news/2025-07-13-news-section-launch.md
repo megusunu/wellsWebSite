@@ -4,7 +4,7 @@ description: "Wells合同会社のWebサイトに、最新情報をお届けす�
 date: 2025-07-13
 category: "news"
 tags: ["お知らせ", "Webサイト", "新機能"]
-featured: true
+featured: false
 ---
 
 この度、Wells合同会社のWebサイトに「お知らせ・更新情報」ページを新設いたしました。

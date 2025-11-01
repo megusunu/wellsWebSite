@@ -13,7 +13,13 @@ draft: false
 
 2025年11月3日（土・祝）、アトレ竹芝で開催された「スポーツ・アートとつながるBamboo Grass Market」に、手編み小物ブランド「MegusunuLab（メグスヌラボ）」として出店いたしました。
 
+<div class="image-grid">
+
 ![ブースの様子](/images/events/takeshiba-market/booth-cat.jpg)
+
+![商品の様子](/images/events/takeshiba-market/products.jpg)
+
+</div>
 
 ### MegusunuLabについて
 
@@ -25,8 +31,6 @@ MegusunuLabは、ペットと人をつなぐ手編みのもふもふ小物を制
 - **オンラインショップ**: [https://megusunulab.square.site/](https://megusunulab.square.site/)
 
 ## 当日の商品ラインナップ
-
-![商品の様子](/images/events/takeshiba-market/products.jpg)
 
 ### ペット用アイテム
 - **スヌード**（ペット用・人用）
