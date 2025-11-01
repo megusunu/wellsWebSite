@@ -220,3 +220,47 @@ a:focus {
   font-size: 0.875rem !important;
   color: #333 !important;
 }
+
+/* 画像のスタイリング */
+.markdown-content img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  margin: 2rem auto !important;
+  display: block !important;
+}
+
+/* 画像グリッドレイアウト */
+.markdown-content .image-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 1.5rem !important;
+  margin: 2rem 0 !important;
+}
+
+.markdown-content .image-grid img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+}
+
+.markdown-content .image-grid-caption {
+  text-align: center !important;
+  font-size: 0.875rem !important;
+  color: #6b7280 !important;
+  margin-top: 0.5rem !important;
+  font-style: italic !important;
+}
+
+/* モバイルでは1列表示 */
+@media (max-width: 640px) {
+  .markdown-content .image-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .markdown-content .image-grid img {
+    height: 250px !important;
+  }
+}
