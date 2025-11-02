@@ -1,0 +1,7 @@
+# robots.txt for https://wells.jp
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://wells.jp/sitemap-index.xml

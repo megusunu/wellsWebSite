@@ -49,6 +49,33 @@ const ga4MeasurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
         </script>
       </>
     )}
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Wells合同会社",
+        "url": "https://wells.jp",
+        "logo": "https://wells.jp/images/logo/1x/wellslogo.png",
+        "foundingDate": "2023-10-05",
+        "founder": {
+          "@type": "Person",
+          "name": "草間 恵"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "渋谷区",
+          "addressRegion": "東京都",
+          "addressCountry": "JP"
+        },
+        "sameAs": [
+          "https://www.instagram.com/megusunu/",
+          "https://x.com/megusunu"
+        ],
+        "description": "システム開発とハンドメイド小物販売を行う一人会社。AWS開発、モバイルアプリ開発、技術書執筆、手編みニットウェア制作を展開。"
+      }
+    </script>
   </head>
   <body class="bg-white min-h-screen">
     <slot />

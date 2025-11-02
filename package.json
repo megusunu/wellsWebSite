@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/markdown-remark": "^6.3.2",
+    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.8.0",
     "marked": "^16.0.0",
