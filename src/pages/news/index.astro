@@ -55,7 +55,7 @@ const getCategoryLabel = (category: string) => {
             Wells合同会社の最新情報をお届けします。<br class="hidden md:block" />
             技術・ハンドメイド・事業に関する様々な情報を発信してまいります。
           </p>
-          <a 
+          <a
             href={`${baseUrl}news/featured/`}
             class="inline-flex items-center bg-vibrant-orange/10 text-vibrant-orange px-6 py-3 rounded-full hover:bg-vibrant-orange hover:text-white transition-colors font-medium"
           >
@@ -64,6 +64,58 @@ const getCategoryLabel = (category: string) => {
             </svg>
             注目記事を見る
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- カテゴリーフィルタ -->
+    <section class="py-8 bg-white border-b border-natural-beige">
+      <div class="section-padding">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-wrap justify-center gap-3">
+            <button
+              data-category="all"
+              class="category-filter-btn px-6 py-2 rounded-full font-medium transition-all text-sm md:text-base
+                     bg-vibrant-orange text-white shadow-md"
+            >
+              すべて
+            </button>
+            <button
+              data-category="news"
+              class="category-filter-btn px-6 py-2 rounded-full font-medium transition-all text-sm md:text-base
+                     bg-natural-beige/50 text-natural-brown hover:bg-natural-green/10 hover:text-natural-green"
+            >
+              ニュース
+            </button>
+            <button
+              data-category="blog"
+              class="category-filter-btn px-6 py-2 rounded-full font-medium transition-all text-sm md:text-base
+                     bg-natural-beige/50 text-natural-brown hover:bg-natural-green/10 hover:text-natural-green"
+            >
+              コラム
+            </button>
+            <button
+              data-category="project"
+              class="category-filter-btn px-6 py-2 rounded-full font-medium transition-all text-sm md:text-base
+                     bg-natural-beige/50 text-natural-brown hover:bg-natural-green/10 hover:text-natural-green"
+            >
+              プロジェクト
+            </button>
+            <button
+              data-category="event"
+              class="category-filter-btn px-6 py-2 rounded-full font-medium transition-all text-sm md:text-base
+                     bg-natural-beige/50 text-natural-brown hover:bg-natural-green/10 hover:text-natural-green"
+            >
+              イベント
+            </button>
+            <button
+              data-category="update"
+              class="category-filter-btn px-6 py-2 rounded-full font-medium transition-all text-sm md:text-base
+                     bg-natural-beige/50 text-natural-brown hover:bg-natural-green/10 hover:text-natural-green"
+            >
+              アップデート
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -77,9 +129,12 @@ const getCategoryLabel = (category: string) => {
               <p class="text-gray-600">まだ記事がありません。</p>
             </div>
           ) : (
-            <div class="space-y-8">
+            <div class="space-y-8" id="news-list">
               {sortedNews.map((entry) => (
-                <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-vibrant-orange hover:shadow-lg transition-shadow">
+                <article
+                  class="news-item bg-white rounded-xl p-6 shadow-sm border-l-4 border-vibrant-orange hover:shadow-lg transition-shadow"
+                  data-category={entry.data.category}
+                >
                   <!-- カテゴリとメタ情報 -->
                   <div class="flex flex-wrap items-center gap-4 mb-4">
                     <span class={`inline-block px-3 py-1 rounded-full text-sm font-medium text-white bg-${getCategoryColor(entry.data.category)}`}>
@@ -197,4 +252,78 @@ const getCategoryLabel = (category: string) => {
   article:nth-child(4) {
     animation-delay: 0.3s;
   }
+
+  /* フィルタされた記事を非表示 */
+  .news-item.hidden {
+    display: none;
+  }
 </style>
+
+<script>
+  // カテゴリーフィルタ機能
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.category-filter-btn');
+    const newsItems = document.querySelectorAll('.news-item');
+
+    // URLパラメータから初期カテゴリーを取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category') || 'all';
+
+    // 初期フィルタを適用
+    if (initialCategory !== 'all') {
+      filterByCategory(initialCategory);
+      updateActiveButton(initialCategory);
+    }
+
+    // ボタンクリックイベント
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+
+        // フィルタを適用
+        filterByCategory(category);
+
+        // アクティブボタンを更新
+        updateActiveButton(category);
+
+        // URLパラメータを更新（履歴に追加）
+        const newUrl = category === 'all'
+          ? window.location.pathname
+          : `${window.location.pathname}?category=${category}`;
+        window.history.pushState({}, '', newUrl);
+      });
+    });
+
+    // カテゴリーでフィルタリング
+    function filterByCategory(category) {
+      newsItems.forEach(item => {
+        if (category === 'all') {
+          item.classList.remove('hidden');
+        } else {
+          const itemCategory = item.getAttribute('data-category');
+          if (itemCategory === category) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        }
+      });
+    }
+
+    // アクティブボタンのスタイル更新
+    function updateActiveButton(category) {
+      filterButtons.forEach(btn => {
+        const btnCategory = btn.getAttribute('data-category');
+        if (btnCategory === category) {
+          // アクティブスタイル
+          btn.classList.remove('bg-natural-beige/50', 'text-natural-brown', 'hover:bg-natural-green/10', 'hover:text-natural-green');
+          btn.classList.add('bg-vibrant-orange', 'text-white', 'shadow-md');
+        } else {
+          // 非アクティブスタイル
+          btn.classList.remove('bg-vibrant-orange', 'text-white', 'shadow-md');
+          btn.classList.add('bg-natural-beige/50', 'text-natural-brown', 'hover:bg-natural-green/10', 'hover:text-natural-green');
+        }
+      });
+    }
+  });
+</script>
