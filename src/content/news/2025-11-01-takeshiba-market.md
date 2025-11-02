@@ -116,19 +116,7 @@ megusunuLabの人気商品のひとつが、ペット用と人用のスヌード
 
 「Bamboo Grass Market」は、アトレ竹芝で定期的に開催されているイベントです。詳細は[アトレ竹芝の公式サイト](https://www.atre.co.jp/takeshiba/news/5465/)をご覧ください。
 
-## 次回イベントとオンライン販売
-
-### 次回イベント
-
-**11月3日（月・祝）「中野セントラルパークMOTTAINAIてづくり市」に出店します！**
-
-- **日時**: 2025年11月3日（月・祝）10:00〜16:00
-- **会場**: 中野セントラルパーク パークアベニュー
-- **詳細**: [中野セントラルパークMOTTAINAIてづくり市 公式ページ](https://nakano20251103.peatix.com/)
-
-ぜひお立ち寄りください！最新情報はInstagramやX（旧Twitter）でもお知らせいたします。
-
-### オンライン販売
+## オンライン販売
 イベントに行けなかった方も、オンラインで購入いただけます：
 
 - **Square オンラインショップ**: [https://megusunulab.square.site/](https://megusunulab.square.site/) - 商品のご購入はこちら
@@ -138,7 +126,7 @@ megusunuLabの人気商品のひとつが、ペット用と人用のスヌード
 - **Instagram**: [@megusunu](https://www.instagram.com/megusunu/)
 - **X (Twitter)**: [@megusunu](https://x.com/megusunu)
 
-イベント情報や制作過程、新商品の情報を随時発信しています。ぜひフォローしてください！
+次回イベント情報や制作過程、新商品の情報を随時発信しています。ぜひフォローしてください！
 
 ---
 
