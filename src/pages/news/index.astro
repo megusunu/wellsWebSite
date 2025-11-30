@@ -295,7 +295,7 @@ const getCategoryLabel = (category: string) => {
     });
 
     // カテゴリーでフィルタリング
-    function filterByCategory(category) {
+    function filterByCategory(category: string) {
       newsItems.forEach(item => {
         if (category === 'all') {
           item.classList.remove('hidden');
@@ -311,7 +311,7 @@ const getCategoryLabel = (category: string) => {
     }
 
     // アクティブボタンのスタイル更新
-    function updateActiveButton(category) {
+    function updateActiveButton(category: string) {
       filterButtons.forEach(btn => {
         const btnCategory = btn.getAttribute('data-category');
         if (btnCategory === category) {
