@@ -278,7 +278,7 @@ const getCategoryLabel = (category: string) => {
     // ボタンクリックイベント
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
+        const category = button.getAttribute('data-category') || 'all';
 
         // フィルタを適用
         filterByCategory(category);
