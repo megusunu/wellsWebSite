@@ -340,9 +340,9 @@ a.advent-cell.active:hover {
 
   <div class="advent-grid">
     <div class="advent-cell empty"></div>
-    <a href="https://zenn.dev/megusunu/articles/20251201-handmade-mind/" class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251201-handmade-mind/" class="advent-cell active">
       <span class="advent-day">1</span>
-      <span class="advent-title">採算度外視で始めたハンドメイド副業が、心のセーフティネットになった話</span>
+      <span class="advent-title">採算度外視で始めたハンドメイド作家が、心のセーフティネットになった話</span>
     </a>
     <a href="https://zenn.dev/megusunu/articles/20251202-strengthsfinder-16years/" class="advent-cell pending">
       <span class="advent-day">2</span>
