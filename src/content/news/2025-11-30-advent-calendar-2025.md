@@ -344,7 +344,7 @@ a.advent-cell.active:hover {
       <span class="advent-day">1</span>
       <span class="advent-title">採算度外視で始めたハンドメイド作家が、心のセーフティネットになった話</span>
     </a>
-    <a href="https://zenn.dev/megusunu/articles/20251202-strengthsfinder-16years/" class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251202-strengthsfinder-16years/" class="advent-cell active">
       <span class="advent-day">2</span>
       <span class="advent-title">慎重さ32位のSEが18年生き残れた理由——そしてAI時代に有利かもしれない話</span>
     </a>
