@@ -348,7 +348,7 @@ a.advent-cell.active:hover {
       <span class="advent-day">2</span>
       <span class="advent-title">慎重さ32位のSEが18年生き残れた理由——そしてAI時代に有利かもしれない話</span>
     </a>
-    <a href="https://zenn.dev/megusunu/articles/20251203-cookie-size-limit/" class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251203-cookie-size-limit/" class="advent-cell active">
       <span class="advent-day">3</span>
       <span class="advent-title">Cookieサイズ制限4096バイトとの戦い——認証トークン保存とnginx設定の最適化</span>
     </a>
