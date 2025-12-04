@@ -352,7 +352,7 @@ a.advent-cell.active:hover {
       <span class="advent-day">3</span>
       <span class="advent-title">Cookieサイズ制限4096バイトとの戦い——認証トークン保存とnginx設定の最適化</span>
     </a>
-    <a href="https://zenn.dev/megusunu/articles/20251204-pet-knitwear/" class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251204-pet-knitwear/" class="advent-cell active">
       <span class="advent-day">4</span>
       <span class="advent-title">エンジニアがペット用ニットウェアを作り始めた理由——編み物ビジネス試行錯誤の記録</span>
     </a>
