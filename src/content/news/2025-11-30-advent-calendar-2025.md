@@ -356,9 +356,9 @@ a.advent-cell.active:hover {
       <span class="advent-day">4</span>
       <span class="advent-title">エンジニアがペット用ニットウェアを作り始めた理由——編み物ビジネス試行錯誤の記録</span>
     </a>
-    <a href="https://zenn.dev/megusunu/articles/20251205-ai-coaching-solo-company/" class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251205-ai-coaching-solo-company/" class="advent-cell active">
       <span class="advent-day">5</span>
-      <span class="advent-title">AIコーチングでひとり会社の運営が楽になった話——1年分溜まった確定申告が進んだ理由</span>
+      <span class="advent-title">AIに壁打ちしたら、ひとり会社の運営が楽になった話</span>
     </a>
     <div class="advent-cell pending">
       <span class="advent-day">6</span>
