@@ -360,10 +360,10 @@ a.advent-cell.active:hover {
       <span class="advent-day">5</span>
       <span class="advent-title">AIに壁打ちしたら、ひとり会社の運営が楽になった話</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251206-gishohaku-special-printing" class="advent-cell active">
       <span class="advent-day">6</span>
-      <span class="advent-title">技書博で特殊印刷を語った話</span>
-    </div>
+      <span class="advent-title">技術同人誌×特殊印刷──懇親会から始まった思考実験</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">7</span>
       <span class="advent-title">売上5万円/月達成まで</span>
