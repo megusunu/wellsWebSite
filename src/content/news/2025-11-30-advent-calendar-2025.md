@@ -364,14 +364,14 @@ a.advent-cell.active:hover {
       <span class="advent-day">6</span>
       <span class="advent-title">技術同人誌×特殊印刷──懇親会から始まった思考実験</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251207-handmade-revenue" class="advent-cell active">
       <span class="advent-day">7</span>
-      <span class="advent-title">売上5万円/月達成まで</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">ハンドメイド副業で月5万円を目指したけど届かなかった話（数字と失敗を全部出す）</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251208-ecs-fargate-scaling" class="advent-cell active">
       <span class="advent-day">8</span>
-      <span class="advent-title">ECS Fargateスケーリング</span>
-    </div>
+      <span class="advent-title">CPUが上がらないのに詰まる？──ECS Fargate×Quarkusで遭遇したスケーリングの落とし穴と対処法</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">9</span>
       <span class="advent-title">Leafletコンビニ分布マップ</span>
