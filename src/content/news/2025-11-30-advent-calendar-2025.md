@@ -372,10 +372,10 @@ a.advent-cell.active:hover {
       <span class="advent-day">8</span>
       <span class="advent-title">CPUが上がらないのに詰まる？──ECS Fargate×Quarkusで遭遇したスケーリングの落とし穴と対処法</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/https://zenn.dev/megusunu/articles/20251209-leaflet-konbini-map" class="advent-cell active">
       <span class="advent-day">9</span>
-      <span class="advent-title">Leafletコンビニ分布マップ</span>
-    </div>
+      <span class="advent-title">Leafletで作るコンビニ分布マップ──MarkerClusterで16,000件を可視化する</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">10</span>
       <span class="advent-title">WordPress+ChatGPT受注システム</span>
