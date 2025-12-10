@@ -376,10 +376,10 @@ a.advent-cell.active:hover {
       <span class="advent-day">9</span>
       <span class="advent-title">Leafletで作るコンビニ分布マップ──MarkerClusterで16,000件を可視化する</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251210-wordpress-chatgpt-api" class="advent-cell active">
       <span class="advent-day">10</span>
-      <span class="advent-title">WordPress+ChatGPT受注システム</span>
-    </div>
+      <span class="advent-title">WordPress に AI レビューを自然に統合する──Structured Outputs 実践ガイド</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">11</span>
       <span class="advent-title">AIコミットメッセージ</span>
