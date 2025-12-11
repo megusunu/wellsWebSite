@@ -380,10 +380,10 @@ a.advent-cell.active:hover {
       <span class="advent-day">10</span>
       <span class="advent-title">WordPress に AI レビューを自然に統合する──Structured Outputs 実践ガイド</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251211-git-commit-ai-command" class="advent-cell active">
       <span class="advent-day">11</span>
-      <span class="advent-title">AIコミットメッセージ</span>
-    </div>
+      <span class="advent-title">Claude Code のカスタムコマンドでコミットメッセージを提案してもらう</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">12</span>
       <span class="advent-title">技術書典と技書博の振り返り</span>
