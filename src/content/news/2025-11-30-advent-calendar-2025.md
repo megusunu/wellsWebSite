@@ -384,14 +384,14 @@ a.advent-cell.active:hover {
       <span class="advent-day">11</span>
       <span class="advent-title">Claude Code のカスタムコマンドでコミットメッセージを提案してもらう</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251211-git-commit-ai-command" class="advent-cell active">
       <span class="advent-day">12</span>
-      <span class="advent-title">技術書典と技書博の振り返り</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">1人アドベントカレンダー折り返し——12日間で見えてきたこと</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251213-3dprinter-knitting" class="advent-cell active">
       <span class="advent-day">13</span>
-      <span class="advent-title">子供向けワークショップ</span>
-    </div>
+      <span class="advent-title">子ブラックフライデーで3Dプリンターを買ったら、朝起きたらガジェットができてた</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">14</span>
       <span class="advent-title">アクリルたわし200個</span>
