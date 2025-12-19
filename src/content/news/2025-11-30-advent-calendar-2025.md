@@ -414,7 +414,7 @@ a.advent-cell.active:hover {
     </a>
     <a href="https://zenn.dev/megusunu/articles/20251219-cloudshell-30min" class="advent-cell active">
       <span class="advent-day">19</span>
-      <span class="advent-title">"AWS CloudShellは30分で切れる" ——その制限を前提に設計すべき理由</span>
+      <span class="advent-title">AWS CloudShellは30分で切れる──その制限を前提に設計すべき理由</span>
     </a>
     <div class="advent-cell pending">
       <span class="advent-day">20</span>
