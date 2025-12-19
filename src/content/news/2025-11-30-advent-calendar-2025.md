@@ -372,7 +372,7 @@ a.advent-cell.active:hover {
       <span class="advent-day">8</span>
       <span class="advent-title">CPUが上がらないのに詰まる？──ECS Fargate×Quarkusで遭遇したスケーリングの落とし穴と対処法</span>
     </a>
-    <a href="https://zenn.dev/megusunu/articles/https://zenn.dev/megusunu/articles/20251209-leaflet-konbini-map" class="advent-cell active">
+    <a href="https://zenn.dev/megusunu/articles/20251209-leaflet-konbini-map" class="advent-cell active">
       <span class="advent-day">9</span>
       <span class="advent-title">Leafletで作るコンビニ分布マップ──MarkerClusterで16,000件を可視化する</span>
     </a>
@@ -384,7 +384,7 @@ a.advent-cell.active:hover {
       <span class="advent-day">11</span>
       <span class="advent-title">Claude Code のカスタムコマンドでコミットメッセージを提案してもらう</span>
     </a>
-    <a href="https://zenn.dev/megusunu/articles/20251211-git-commit-ai-command" class="advent-cell active">
+    <a href="https://zenn.dev/megusunu/articles/20251212-advent-calendar-halfway" class="advent-cell active">
       <span class="advent-day">12</span>
       <span class="advent-title">1人アドベントカレンダー折り返し——12日間で見えてきたこと</span>
     </a>
@@ -392,30 +392,30 @@ a.advent-cell.active:hover {
       <span class="advent-day">13</span>
       <span class="advent-title">子ブラックフライデーで3Dプリンターを買ったら、朝起きたらガジェットができてた</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251214-acrylic-sponge-200" class="advent-cell active">
       <span class="advent-day">14</span>
-      <span class="advent-title">アクリルたわし200個</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">アクリルたわしを200個作ってしまった話——在庫管理の失敗とエンジニア的リカバリー</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251215-dynamodb-design-fails" class="advent-cell active">
       <span class="advent-day">15</span>
-      <span class="advent-title">DynamoDB設計の失敗</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">DynamoDB設計の失敗と学び ― 技術ではなく設計でつまずいた話</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251216-dynamodb-kms-encryption" class="advent-cell active">
       <span class="advent-day">16</span>
-      <span class="advent-title">Mutinyパフォーマンス問題</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">"DynamoDB暗号化は後から変えられない" ——KMSキャッシュ化とデータ移行の話</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251217-dynamodb-begins-with" class="advent-cell active">
       <span class="advent-day">17</span>
-      <span class="advent-title">DynamoDB暗号化(KMS)</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">"DynamoDB begins_with の罠——「便利」で使うと爆死する"</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251218-kids-workshop" class="advent-cell active">
       <span class="advent-day">18</span>
-      <span class="advent-title">DynamoDB begins_with</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">子供向けワークショップを運営して気づいた7つのこと</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251219-cloudshell-30min" class="advent-cell active">
       <span class="advent-day">19</span>
-      <span class="advent-title">CloudShell 30分制限</span>
-    </div>
+      <span class="advent-title">"AWS CloudShellは30分で切れる" ——その制限を前提に設計すべき理由</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">20</span>
       <span class="advent-title">AIで会社HP1年運用</span>
