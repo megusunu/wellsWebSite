@@ -390,7 +390,7 @@ a.advent-cell.active:hover {
     </a>
     <a href="https://zenn.dev/megusunu/articles/20251213-3dprinter-knitting" class="advent-cell active">
       <span class="advent-day">13</span>
-      <span class="advent-title">子ブラックフライデーで3Dプリンターを買ったら、朝起きたらガジェットができてた</span>
+      <span class="advent-title">ブラックフライデーで3Dプリンターを買ったら、朝起きたらガジェットができてた</span>
     </a>
     <a href="https://zenn.dev/megusunu/articles/20251214-acrylic-sponge-200" class="advent-cell active">
       <span class="advent-day">14</span>
@@ -402,11 +402,11 @@ a.advent-cell.active:hover {
     </a>
     <a href="https://zenn.dev/megusunu/articles/20251216-dynamodb-kms-encryption" class="advent-cell active">
       <span class="advent-day">16</span>
-      <span class="advent-title">"DynamoDB暗号化は後から変えられない" ——KMSキャッシュ化とデータ移行の話</span>
+      <span class="advent-title">DynamoDB暗号化は後から変えられない──KMSキャッシュ化とデータ移行の話</span>
     </a>
     <a href="https://zenn.dev/megusunu/articles/20251217-dynamodb-begins-with" class="advent-cell active">
       <span class="advent-day">17</span>
-      <span class="advent-title">"DynamoDB begins_with の罠——「便利」で使うと爆死する"</span>
+      <span class="advent-title">DynamoDB begins_with の罠——「便利」で使うと爆死する</span>
     </a>
     <a href="https://zenn.dev/megusunu/articles/20251218-kids-workshop" class="advent-cell active">
       <span class="advent-day">18</span>
