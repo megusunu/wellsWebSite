@@ -416,10 +416,10 @@ a.advent-cell.active:hover {
       <span class="advent-day">19</span>
       <span class="advent-title">AWS CloudShellは30分で切れる──その制限を前提に設計すべき理由</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251220-ai-hp-one-year" class="advent-cell active">
       <span class="advent-day">20</span>
-      <span class="advent-title">AIで会社HP1年運用</span>
-    </div>
+      <span class="advent-title">AIで会社HPを半年運用してみた──イベント会場でも記事が書ける開発体験</span>
+    </a>
     <div class="advent-cell pending">
       <span class="advent-day">21</span>
       <span class="advent-title">Upsider資金管理</span>
