@@ -420,26 +420,26 @@ a.advent-cell.active:hover {
       <span class="advent-day">20</span>
       <span class="advent-title">AIで会社HPを半年運用してみた──イベント会場でも記事が書ける開発体験</span>
     </a>
-    <div class="advent-cell pending">
+    <a href="https://zenn.dev/megusunu/articles/20251221-upsider-bequem" class="advent-cell active">
       <span class="advent-day">21</span>
-      <span class="advent-title">Upsider資金管理</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">UPSIDERが便利——小さな会社の資金管理</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251222-maiking-book" class="advent-cell active">
       <span class="advent-day">22</span>
-      <span class="advent-title">LINE BOT本を改訂</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">4年越しでLINE BOT同人誌を改訂したときに考えたこと</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251223-square-christmas" class="advent-cell active">
       <span class="advent-day">23</span>
-      <span class="advent-title">Affinityで手芸本</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">ハンドメイドショップをギリギリでクリスマス仕様に整えた話</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251224-continuing-by-not-continuing" class="advent-cell active">
       <span class="advent-day">24</span>
-      <span class="advent-title">『続けない』技術</span>
-    </div>
-    <div class="advent-cell pending">
+      <span class="advent-title">続けることが苦手な人へ——18年間で学んだ『続けない』技術</span>
+    </a>
+    <a href="https://zenn.dev/megusunu/articles/20251225-advent-calendar-finale" class="advent-cell active">
       <span class="advent-day">25</span>
-      <span class="advent-title">2026年への招待状</span>
-    </div>
+      <span class="advent-title">25日間書いて見えてきたこと——2026年への招待状</span>
+    </a>
     <div class="advent-cell empty"></div>
     <div class="advent-cell empty"></div>
   </div>
