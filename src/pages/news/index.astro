@@ -132,8 +132,9 @@ const getCategoryLabel = (category: string) => {
             <div class="space-y-8" id="news-list">
               {sortedNews.map((entry) => (
                 <article
-                  class="news-item bg-white rounded-xl p-6 shadow-sm border-l-4 border-vibrant-orange hover:shadow-lg transition-shadow"
+                  class="news-item bg-white rounded-xl p-6 shadow-sm border-l-4 border-vibrant-orange hover:shadow-lg transition-all cursor-pointer"
                   data-category={entry.data.category}
+                  data-href={`${baseUrl}news/${entry.slug}/`}
                 >
                   <!-- カテゴリとメタ情報 -->
                   <div class="flex flex-wrap items-center gap-4 mb-4">
@@ -260,6 +261,25 @@ const getCategoryLabel = (category: string) => {
 </style>
 
 <script>
+  // カード全体クリックで記事ページへ遷移
+  document.addEventListener('DOMContentLoaded', () => {
+    const newsCards = document.querySelectorAll('.news-item[data-href]');
+
+    newsCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        // タグやバッジのリンクをクリックした場合は何もしない
+        if (target.closest('a')) {
+          return;
+        }
+        const href = card.getAttribute('data-href');
+        if (href) {
+          window.location.href = href;
+        }
+      });
+    });
+  });
+
   // カテゴリーフィルタ機能
   document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.category-filter-btn');
