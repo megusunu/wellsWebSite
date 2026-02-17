@@ -1,1 +1,2 @@
 google.com, pub-1760641015949700, DIRECT, f08c47fec0942fa0
+subdomain=lab.wells.jp
